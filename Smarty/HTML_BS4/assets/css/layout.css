@@ -2380,7 +2380,7 @@ body.menu-vertical #mainMenu.sidebar-vertical .navbar-collapse>ul.nav.navbar-nav
 			width:100%;
 		}
 
-		
+	
 		body.menu-vertical.menu-vertical-hide #mainMenu.sidebar-vertical {
 			left:0 !important; right:0;
 		}
@@ -6679,7 +6679,7 @@ section#slider:not(.custom-form) form .btn {
 	margin:0;
 }
 section#slider:not(.custom-form) input {
-	color:#fff;
+	color:#fff; 
 	background-color:rgba(0,0,0,0.7);
 	border-color:rgba(255,255,255,0.3);
 }
