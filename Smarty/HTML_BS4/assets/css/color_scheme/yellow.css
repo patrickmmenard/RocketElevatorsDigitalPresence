@@ -1,13 +1,13 @@
 /** Yellow	#FAB702
  **************************************************************** **/
 	::selection {
-		background: #FAB702;
+		background: #0244fa;
 	}
 	::-moz-selection {
-		background: #FAB702; /* Firefox */
+		background: #0244fa; /* Firefox */
 	}
 	::-webkit-selection {
-		background: #FAB702; /* Safari */
+		background:#0244fa; /* Safari */
 	}
 
 
@@ -74,7 +74,7 @@
 	.box-icon.box-icon-color i,
 	.switch-primary.switch-round > input:checked + .switch-label:after,
 	section.dark .nav-tabs.nav-clean>li>a.active { 
-		color: #FAB702; 
+		color: #0244fa; 
 	}
 	
 	#sidepanel.sidepanel-theme-color,
@@ -119,7 +119,7 @@
 	#progressBar #bar,								/* OWL */
 	#page-menu,
 	#page-menu ul {
-		background-color:#FAB702;
+		background-color:#0244fa;
 	}
 	
 	/* !important required */
@@ -127,7 +127,7 @@
 	#music-player .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,
 	section .theme-background,
 	.swiper-pagination-bullet-active {
-		background-color:#FAB702 !important;
+		background-color:#0244fa !important;
 	}
 	.inews-content-inner h3>a,
 	div.side-nav ul>li:hover>a, 
@@ -135,7 +135,7 @@
 	.pagination.pagination-simple>li.active>a,
 	div.side-nav ul.list-group-bordered>li>a:hover,
 	section .theme-color {
-		color:#FAB702 !important;
+		color:#0244fa !important;
 	}
 
 	.primary-slider .ui-slider .ui-slider-handle,
@@ -148,7 +148,7 @@
 	.btn-primary:hover,
 	.btn-primary:active,
 	.btn-primary:focus {
-		border-color:#FAB702;
+		border-color:#0244fa;
 	}
 
 	.open>.dropdown-toggle.btn-primary,
@@ -171,7 +171,7 @@
 	}
 
 	#topNav ul.dropdown-menu {
-		border-color: #FAB702 #fff #fff;
+		border-color: #FAB702 #fff #fff;c
 	}
 	#topNav div.submenu-dark ul.dropdown-menu {
 		border-color: #FAB702 #3F3F3F #3F3F3F;
@@ -468,10 +468,10 @@ i.ico-hover:hover {
 /* normal state */
 /**/
 .sky-form .toggle i:before {
-	background-color: #FAB702;	
+	background-color: #0244fa;	
 }
 .sky-form .button {
-	background-color: #FAB702;
+	background-color: #0244fa;
 }
 
 
@@ -525,5 +525,5 @@ i.ico-hover:hover {
 .hvr-overline-from-right:before,
 .hvr-underline-reveal:before,
 .hvr-overline-reveal:before {
-	background-color: #FAB702;
+	background-color: #0244fa;
 }

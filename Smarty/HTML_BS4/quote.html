@@ -229,7 +229,8 @@
 									<div class="row">
 										<div class="col-md-4">
 											<label for="contact_department">Building type</label>
-											<select id='building' class="form-control pointer" onchange='myFunction()' >
+											
+											<select id='building' class="form-control pointer" style='width: 200px'  onchange=''>
 												<option value="">--- Select ---</option>
 												<option value="Residential">Residential</option>
 												<option value="Commercial">Commercial</option>
@@ -241,26 +242,53 @@
 									</div>
 								</form>
 								
-								<div id= 'res_questions' class='question'>
-										<div class='row'>
-
+							<div id= 'res_questions'>
+								<div  class='question row'>
+										
+											
 											<div class='col-lg'>
-												<label for= 'res_nb'>1. How many apartments/units will there be?</label>
-												<input type= 'number' id='res_nb' value = '0' >
+												<label for= 'res_nb' >1. How many apartments/units will there be?</label>
 											</div>
 							
 											<div class='col-lg'>
-												<label for= 'res_flo'>2. How many floors?</label>
-												<input  type= 'number' id='res_flo' value='0'>
+												<label for= 'res_flo' >2. How many floors?</label>
 											</div>
 
 											<div class='col-lg'>
 												<label for= 'res_under'>3. How many underground floors?</label>
-												<input  type= 'number' id= 'res_under' value='0'>
 											</div>
-										
-										</div>
+											 
 								</div>
+
+									<div class='row'>
+									<input class='col-lg'  type= 'number' id='res_nb' value = '0' >
+									<input class='col-lg' type= 'number' id='res_flo' value='0'>
+									<input class='col-lg' type= 'number' id= 'res_under' value='0'>
+									</div>
+
+								<div class='row'>
+									<div class='col'>
+										<input type='button' onClick='residential()' Value = 'Evaluate'>	
+									</div>
+								</div>
+							</div>
+
+								<div>
+									1st Number : <input type="text" id="firstNumber" /><br>
+									2nd Number: <input type="text" id="secondNumber" /><br>
+									<input type="button" onClick="multiplyBy()" Value="Multiply" />
+									
+								</div>
+
+							<div class = 'col' id='nb_elevators_res' >
+										<label>Nb of elevators (min)</label>
+										
+									</div>
+								
+									<div class = 'col' id='nb_columns_res' >
+										<label>Nb of columns (min)</label>
+										
+									</div>
 
 									<div id='com_questions' class='question'>
 										<div class='row'>
@@ -361,13 +389,14 @@
 
 								<form id='radio_buttons' action="/action_page.php">
 								<p>Please select a product line.</p>
+								<div class='row'>
 								<input type="radio" id="standard" name="gender" value="7565">
 								<label for="standard">Standard</label><br>
 								<input type="radio" id="premium" name="gender" value="12345">
 								<label for="premium">Premium</label><br>
 								<input type="radio" id="excelium" name="gender" value="15400">
 								<label for="excelium">Excelium</label>
-
+							</div>
 							<div class='col-lg'>
 									<label for= 'res_nb'><br>Unit price for an elevator of the chosen line:</label>
 									<div id= 'reponse'>
@@ -378,15 +407,10 @@
 							<div class= 'row'>
 								
 								
-									<div class = 'col' id='nb_elevators' >
-										<label>Nb of elevators (min)</label>
-										<input type='number' id='nb_el' value=''  >
-									</div>
-								
-									<div class = 'col' id='nb_columns' >
-										<label>Nb of columns (min)</label>
-										<input type='number' id='nb_col' value=''placeholder='' disabled>
-									</div>
+									
+									
+									<p>The Result is : <br>
+									<span id='result'></span>
 								
 							</div>
 
@@ -413,90 +437,7 @@
 
 			<!-- /QUOTE -->
 			
-			<!-- MORTGAGE CALCULATOR -->
-			<section id="mortgage-calculator">
-				<div class="container pt-30 pb-30">
-
-					<div class="row">
-
-						<div class="col-md-6">
-
-							<div class="row">
-
-								<div class="col-sm-6 m-0">
-									<label class="fs-12">PRICE</label>
-									<input id="mcalc-price" type="number" class="form-control" value="2100000">
-
-									<label class="fs-12">TERM</label>
-									<select id="mcalc-term" class="form-control">
-										<option value="10">10 YEARS</option>
-										<option value="15">15 YEARS</option>
-										<option value="20">20 YEARS</option>
-										<option value="30" selected="selected">30 YEARS</option>
-									</select>
-								</div>
-
-								<div class="col-sm-6 m-0">
-									<label class="fs-12">% DOWN PAYMENT</label>
-									<input id="mcalc-dpayment" type="number" class="form-control" value="15">
-
-									<label class="fs-12">RATE</label>
-									<input id="mcalc-rate" type="number" class="form-control" value="4.25">
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="col-md-6 mb-30">
-
-
-							<table class="table fs-14 m-0">
-								<tbody>
-									<tr>
-										<td class="b-0 p-3">MORTGAGE AMOUNT</td>
-										<td class="b-0 p-3 text-right text-warning fw-800">$<span id="mcalc-result-mamount">0</span></td>
-									</tr>
-									<tr>
-										<td class="b-0 p-3">DOWN PAYMENT AMOUNT</td>
-										<td class="b-0 p-3 text-right">$<span id="mcalc-result-downpayment">420,000.00</span></td>
-									</tr>
-								</tbody>
-							</table>
-
-							<hr />
-
-							<table class="table fs-14 m-0">
-								<tbody>
-									<tr>
-										<td class="b-0 p-3">MONTHLY MORTGAGE PAYMENT</td>
-										<td class="b-0 p-3 text-right text-black fw-800">$<span id="mcalc-mortgage">0</span></td>
-									</tr>
-									<tr>
-										<td class="b-0 p-3">ADDITIONAL MONTHLY CHARGES</td>
-										<td class="b-0 p-3 text-right text-black fw-800">$<span id="mcalc-charges">3,792.44</span></td>
-									</tr>
-									<tr>
-										<td class="b-0 p-3">TOTAL MONTHLY PAYMENT</td>
-										<td class="b-0 p-3 text-right text-black fw-800">$<span id="mcalc-pmonthly">0</span></td>
-									</tr>
-								</tbody>
-							</table>
-							<div class='container'>
-								<div class="b-0 p-3">
-									<p>MONTHLY MORTGAGE PAYMENT</p>
-									<p></p>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-			</section>
-			<!-- /MORTGAGE CALCULATOR -->
-
+			
 
 
 			<!-- 
@@ -663,6 +604,19 @@
 			}
 		
 		});
+
+	
+		
+
+		// 	console.log('blabla', _res_nb)
+
+			//$('#res_nb').on('change', function(){
+				//var _res_nb = document.getElementById('res_nb');
+			//}
+
+		
+		//var nb_elevators_res = res_nb;
+
 		//CALCULATES NB OF ELEVATORS AND COLUMNS
 		// var 	_res_nb 			= $('id=res_nb').val();			
 		
@@ -676,14 +630,58 @@
 
 		
 		//Ebauche pour afficher...principe...
-		$("input[type='number']").change(function(){
-			var _res_nb = document.getElementById('res_nb');
-			var _nb_asc = _res_nb;
-			if(_nb_asc){
-				$('#nb_el').html(_nb_asc)
-			}
-		});
+		// $("input[type='number']").change(function(){
+		// 	var _res_nb = document.getElementById('res_nb');
+		// 	var _nb_asc = _res_nb;
+		// 	if(_nb_asc){
+		// 		$('#nb_el').html(_nb_asc)
+		// 	}	
+		// });
 
+		// RESIDENTIAL
+		//siehe Beispiel hier: https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-10.php 
+		function multiplyBy()
+{
+		num1 = document.getElementById("firstNumber").value;
+		num2 = document.getElementById("secondNumber").value;
+		document.getElementById("result").innerHTML = num1 * num2;
+		//console.log(result)
+}
+		
+		//function residential(){
+
+
+			// var _building = $('#building option:selected').val();
+			// if (_building=='Residential'){
+			// 	console.log('blabla', _building)
+			// 	var _res_nb = document.getElementById('res_nb');
+			// 	//var _res_nb = parseInt(document.getElementById('res_nb').value,10);
+			// 	console.log('nimportequoi', _res_nb) 
+			// 	$('#four').innerHTML(_res_nb)
+			//}
+		//}
+
+		
+
+
+
+		// $("input[type='number']").change(function(){
+        //     var test = $("input[name='res_nb']:checked").val();
+		// 	if(radioValue){
+		// 		alert("Unit price for an elevator of the chosen line: $" + radioValue);
+		// 		$('#reponse').html('$' + radioValue)
+		// 	}
+		// });
+
+            
+
+		//les noms en 1er:  id='res_nb'c le input de la question. ou la montrer?nb_elevators_res
+	// 	$("input[type='number']").change(function(){	
+	// 	var res_nb = $("input[id='#res_nb']:checked").val();
+	// 	if(res_nb) {
+	// 		alert("res_nb=" + res_nb);
+	// 	}
+	// });
 		//MANAGE UNIT PRICE FOR CHOSEN LINE
 		$('#unit_price_standard').hide();
 		$('#unit_price_premium').hide();
