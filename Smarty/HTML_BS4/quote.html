@@ -15,7 +15,7 @@
 
 		<!-- CORE CSS -->
 		<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="custom.css">
+		<link rel="stylesheet" type="text/css" href="assets\css\custom.css">
 
 		<!-- REVOLUTION SLIDER -->
 		<link href="assets/plugins/slider.revolution/css/extralayers.css" rel="stylesheet" type="text/css" />
@@ -64,7 +64,7 @@
 						<h6><i class="icon-heart"></i> WHY ROCKET ELEVATORS?</h6>
 						<p>Rocket Elevators is the largest subsidiary of Rocket Corp. and specialises in the delivery of social and economic infrastructure projects, including high-rise developments, airport terminals, luxury villas and iconic landmarks. </p>
 					</div>
-
+					<!--
 					<div class="col-md-4">
 						<h6><i class="fa-facheck"></i> RECENTLY VISITED</h6>
 						<ul class="list-unstyled">
@@ -75,7 +75,7 @@
 							<li><a href="#"><i class="fa fa-angle-right"></i> Consectetur adipiscing elit amet,consectetur adipiscing elit</a></li>
 						</ul>
 					</div>
-
+					-->
 					<div class="col-md-4">
 						<h6><i class="icon-envelope"></i> CONTACT INFO</h6>
 						<ul class="list-unstyled">
@@ -164,42 +164,34 @@
 									</li>
 									<li><!-- SERVICES -->
 										
-										<a href="page-services-2.html">
-											RESIDENTIAL
-										</a>
+										<a class ='dropdown-toggle'>SERVICES</a>
+											<ul class='dropdown-menu white-space= normal'>
+											<li><a href='residential.html'>Residential</a></li>
+											<li><a href="commercial.html">Commercial</a></li>
+									
+										</ul>
 									</li>
-									<li><!-- SERVICES -->
-										<a href="page-services-2 - Copy.html">
-											COMMERCIAL
-										</a>
-									</li>
-									<li><!-- WORK -->
-										<a href="#work">
-											WORK
+								
+									<li><!-- PORTFOLIO -->
+										<a href="index.html#portfolio">
+											PORTFOLIO
 										</a>
 									</li>
 									<li><!-- NEWS -->
-										<a href="#news">
+										<a href="index.html#news">
 											NEWS
 										</a>
 									</li>
-									<li><!-- OVERVIEW -->
-										<a href="#overview">
-											OVERVIEW
-										</a>
-									</li>
+									
 									<li><!-- CLIENTS -->
-										<a href="#clients">
+										<a href="index.html#clients">
 											CLIENTS
 										</a>
 									</li>
-									<li><!-- BLOG -->
-										<a class="external" href="blog-default-aside-left.html">
-											BLOG
-										</a>
+									
 									</li>
 									<li><!-- CONTACT -->
-										<a href="#contact">
+										<a href="index.html#contact">
 											CONTACT
 										</a>
 									</li>
@@ -249,24 +241,22 @@
 									</div>
 								</form>
 								
-
-										
 								<div id= 'res_questions' class='question'>
 										<div class='row'>
 
 											<div class='col-lg'>
 												<label for= 'res_nb'>1. How many apartments/units will there be?</label>
-												<input class='justify' type= 'number' id='res_nb' value = '0'>
+												<input type= 'number' id='res_nb' value = '0' >
 											</div>
 							
 											<div class='col-lg'>
 												<label for= 'res_flo'>2. How many floors?</label>
-												<input class='justify' type= 'number' id='res_flo' value='0'>
+												<input  type= 'number' id='res_flo' value='0'>
 											</div>
 
 											<div class='col-lg'>
 												<label for= 'res_under'>3. How many underground floors?</label>
-												<input  class='justify' type= 'number' id= 'res_under' value='0'>
+												<input  type= 'number' id= 'res_under' value='0'>
 											</div>
 										
 										</div>
@@ -305,25 +295,25 @@
 										<div class='row'>
 										<div class='col'>
 											<label for='corp_nb'>How many renting businesses will there be?</label>
-											<input type='number' id= 'corp_nb' value = '0'>
+											<input display: inline-block type='number' id= 'corp_nb' value = '0'>
 										</div>
 										<div class='col'>
 											<label for = 'corp_flo'>How many floors?</label>
-											<input type='number' id= 'corp_flo' value='0'>
+											<input display: inline-block type='number' id= 'corp_flo' value='0'>
 										</div>
 										<div class='col'>
 											<label for='corp_under'>How many underground floors?</label>
-											<input type='number' id='corp_under' value='0'>
+											<input display: inline-block type='number' id='corp_under' value='0'>
 										</div>
 										<div class='col'>
 											<label for='corp_parking'>How many parking places?</label>
-											<input type='number' id='corp_parking' value='0'>
+											<input display: inline-block  type='number' id='corp_parking' value='0'>
 										</div>
 										<div class='col'>
 											<label for='corp_max_person'>Maximal floor occupancy?</label>
-											<input type='number' id='corp_max_person' value='0'>
+											<input display: inline-block type='number' id='corp_max_person' value='0'>
 										</div>
-									   </div>
+									</div class='row'>
 									</div>
 
 									<div class='question' id= 'hyb_questions'>
@@ -359,7 +349,7 @@
 
 									
 									
-								</fieldset>
+								
 
 								<!--<div class="row">
 									<div class="col-md-12">
@@ -367,47 +357,46 @@
 									</div>
 								</div>-->
 							</form>
+							<h3>From reliable Affordability all the way up to great Luxury </h3>
+
+								<form id='radio_buttons' action="/action_page.php">
+								<p>Please select a product line.</p>
+								<input type="radio" id="standard" name="gender" value="7565">
+								<label for="standard">Standard</label><br>
+								<input type="radio" id="premium" name="gender" value="12345">
+								<label for="premium">Premium</label><br>
+								<input type="radio" id="excelium" name="gender" value="15400">
+								<label for="excelium">Excelium</label>
+
+							<div class='col-lg'>
+									<label for= 'res_nb'><br>Unit price for an elevator of the chosen line:</label>
+									<div id= 'reponse'>
+									</div>
+									
+								</div>
 							
-						</div>
-						<div class="container">
-							<h2>Form control: radio buttons</h2>
-							<p>Please select a product line.</p>
-							<form>
-								<div class="radio">
-								<label><input type="radio" name="optradio" checked>Standard</label>
-								</div>
-								<div class="radio">
-								<label><input type="radio" name="optradio">Premium</label>
-								</div>
-								<div class="radio disabled">
-								<label><input type="radio" name="optradio" disabled>Excelium</label>
-								</div>
-							</form>
+							<div class= 'row'>
+								
+								
+									<div class = 'col' id='nb_elevators' >
+										<label>Nb of elevators (min)</label>
+										<input type='number' id='nb_el' value=''  >
+									</div>
+								
+									<div class = 'col' id='nb_columns' >
+										<label>Nb of columns (min)</label>
+										<input type='number' id='nb_col' value=''placeholder='' disabled>
+									</div>
+								
 							</div>
 
-							<h1>Display Radio Buttons</h1>
-
-								<form action="/action_page.php">
-								<p>Please select a product line.</p>
-								<input type="radio" id="male" name="gender" value="male">
-								<label for="male">Male</label><br>
-								<input type="radio" id="female" name="gender" value="female">
-								<label for="female">Female</label><br>
-								<input type="radio" id="other" name="gender" value="other">
-								<label for="other">Other</label>
-
-								<br>  
-
-								<p>Please select your age:</p>
-								<input type="radio" id="age1" name="age" value="30">
-								<label for="age1">0 - 30</label><br>
-								<input type="radio" id="age2" name="age" value="60">
-								<label for="age2">31 - 60</label><br>  
-								<input type="radio" id="age3" name="age" value="100">
-								<label for="age3">61 - 100</label><br><br>
-								<input type="submit" value="Submit">
+						</fieldset>
 								</form>
 
+						</div>
+					
+
+							
 
 
 
@@ -481,7 +470,7 @@
 								<tbody>
 									<tr>
 										<td class="b-0 p-3">MONTHLY MORTGAGE PAYMENT</td>
-										<td class="b-0 p-3 text-right text-black fw-800">$<span id="mcalc-mortgage">0/span></td>
+										<td class="b-0 p-3 text-right text-black fw-800">$<span id="mcalc-mortgage">0</span></td>
 									</tr>
 									<tr>
 										<td class="b-0 p-3">ADDITIONAL MONTHLY CHARGES</td>
@@ -493,7 +482,12 @@
 									</tr>
 								</tbody>
 							</table>
-
+							<div class='container'>
+								<div class="b-0 p-3">
+									<p>MONTHLY MORTGAGE PAYMENT</p>
+									<p></p>
+								</div>
+							</div>
 
 						</div>
 
@@ -523,12 +517,12 @@
 
 				<div class="text-center">
 
-					<h3>Call now at <span><strong>+800-565-2390</strong></span> and get 15% discount!</h3>
+					<h3>Call now at <span><strong>1-581-701-0303</strong></span> and get 15% discount!</h3>
 					<p class="font-lato fs-20">
-						We truly care about our users and our product.
+						Elevate Safety, Speed and Style.
 					</p>
 					
-					<a href="page-contact-1.html" class="btn btn-primary btn-lg btn-round mt-30">CONTACT US NOW</a>
+					<a href="index.html#contact" class="btn btn-danger btn-lg btn-round mt-30">CONTACT US NOW</a>
 
 				</div>
 
@@ -630,10 +624,13 @@
 		<!--MY SCRIPT-->
 		
 		<script>
+		//MANAGE QUESTIONS
 		$('#res_questions').hide();
 		$('#com_questions').hide();
 		$('#corp_questions').hide();
 		$('#hyb_questions').hide();
+
+/* $(selector).show(speed,easing,callback) */
 
 		$('#building').on('change', function(){
 			var chosen = $('#building option:selected').val();
@@ -666,13 +663,55 @@
 			}
 		
 		});
-		</script>
+		//CALCULATES NB OF ELEVATORS AND COLUMNS
+		// var 	_res_nb 			= $('id=res_nb').val();			
+		
+		// // 		// _res_flo			= $('#res_flo').val()				||0				//nb of floors
+		// // 		// _res_under			= $('#res_under').val()				||0				//nb of underground floors
+		// // 		// _com_nb				= $('#com_nb').val()				||0				//
+		// // 		// _com_flo			= $('#com_flo').val()				||0				//
+		// // 		// _com_under			= $('#com_under').val()				||0				//
+		// var 	_nb_asc				=$("input[id=res_nb]:change").val();
+		// // $('#nb_elevators').html(_nb_asc)
 
 		
-			
-			
-			
+		//Ebauche pour afficher...principe...
+		$("input[type='number']").change(function(){
+			var _res_nb = document.getElementById('res_nb');
+			var _nb_asc = _res_nb;
+			if(_nb_asc){
+				$('#nb_el').html(_nb_asc)
+			}
+		});
 
+		//MANAGE UNIT PRICE FOR CHOSEN LINE
+		$('#unit_price_standard').hide();
+		$('#unit_price_premium').hide();
+		$('#unit_price_excelium').hide();
+
+		$("input[type='radio']").click(function(){
+            var radioValue = $("input[name='gender']:checked").val();
+			if(radioValue){
+				alert("Unit price for an elevator of the chosen line: $" + radioValue);
+				$('#reponse').html('$' + radioValue)
+			}
+		});
+			
+		// if(radioValue = '7565')
+			// if(radioValue = '12345')
+/*
+		$('#radio_buttons').on('change', function(){
+			var choice = $('#radio_buttons' option:selected').val();
+			if (choice == 'standard'){
+				$('unit_price_standard').show();
+				$('#unit_price_premium').hide();
+				$('#unit_price_excelium').hide();
+			}
+		});
+*/
+		</script>
+
+	
 <script>
 /*
 

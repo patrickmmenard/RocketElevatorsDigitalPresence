@@ -21,3 +21,21 @@ border-color: #ff0000;
 .custom-file-input{
     color: #ff0000
 }
+
+label{
+    display: inline-block;
+    /*float: left;*/
+    clear: left;
+    width: 250px;
+    text-align: left;
+}
+
+
+input {
+  display: inline-block;
+
+}
+
+.col-lg{
+    display: inline-block;
+}
