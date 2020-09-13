@@ -249,6 +249,7 @@
 											<div class='col-lg'>
 												<label for= 'res_nb' >1. How many apartments/units will there be?</label>
 											</div>
+											
 							
 											<div class='col-lg'>
 												<label for= 'res_flo' >2. How many floors?</label>
@@ -261,60 +262,52 @@
 								</div>
 
 									<div class='row'>
-									<input class='col-lg'  type= 'number' id='res_nb' value = '0' >
-									<input class='col-lg' type= 'number' id='res_flo' value='0'>
-									<input class='col-lg' type= 'number' id= 'res_under' value='0'>
+									<input class='col'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential()' >
+									<input class='col' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential()'>
+									<input class='col' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential()'>
 									</div>
 
 								<div class='row'>
 									<div class='col'>
-										<input type='button' onClick='residential()' Value = 'Evaluate'>	
+										<input type='button' onClick='residential()' Value = 'Calculate elevators and columns'>	
 									</div>
 								</div>
 							</div>
 
-								<div>
+								<!-- <div>
 									1st Number : <input type="text" id="firstNumber" /><br>
 									2nd Number: <input type="text" id="secondNumber" /><br>
 									<input type="button" onClick="multiplyBy()" Value="Multiply" />
 									
-								</div>
+								</div> -->
 
-							<div class = 'col' id='nb_elevators_res' >
-										<label>Nb of elevators (min)</label>
-										
-									</div>
-								
-									<div class = 'col' id='nb_columns_res' >
-										<label>Nb of columns (min)</label>
-										
-									</div>
+							
 
 									<div id='com_questions' class='question'>
 										<div class='row'>
 											<div class='col'>
 											<label for= 'com_nb'>1. How many distinct businesses will there be?</label>
-											<input type= 'number' id='com_nb' value = '0'>
+											<input type= 'number' id='com_nb' value = '0' min='0' oninput='commercial()'>
 											</div>
 
 											<div class='col'>
 											<label for= 'com_flo'>2. How many floors?</label>
-											<input type= 'number' id='com_flo' value='0'>
+											<input type= 'number' id='com_flo' value='0' min='0' oninput='commercial()'>
 											</div>
 
 											<div class='col'>
 											<label for= 'com_under'>3. How many underground floors?</label>
-											<input type= 'number' id= 'com_under' value='0'>
+											<input type= 'number' id= 'com_under' value='0' min='0' oninput='commercial()'>
 											</div>
 										
 											<div class='col'>
 											<label for= 'com_parking'>4. How many parking places?</label>
-											<input type= 'number' id= 'com_parking' value='0'>
+											<input type= 'number' id= 'com_parking' value='0' min='0' oninput='commercial()'>
 											</div>
 									
 											<div class='col'>
 											<label for= 'com_asc'>5. How many elevators?</label>
-											<input type= 'number' id='com_shaft' value= '0'>
+											<input type= 'number' id='com_shaft' value= '0' min='0' oninput='commercial()'>
 											</div>
 										</div>
 									</div>
@@ -372,12 +365,16 @@
 										</div>
 									   </div>
 									</div>
-
+									<div class = 'col' >
+										<label>Number of elevators:</label>
+										<span id='nb_elevators_res'></span>
 									</div>
-
-									
-									
 								
+									<div class = 'col' >
+										<label>Number of columns:</label>
+										<span id='nb_columns_res'></span>
+									</div>
+									</div>
 
 								<!--<div class="row">
 									<div class="col-md-12">
@@ -390,29 +387,34 @@
 								<form id='radio_buttons' action="/action_page.php">
 								<p>Please select a product line.</p>
 								<div class='row'>
-								<input type="radio" id="standard" name="gender" value="7565">
-								<label for="standard">Standard</label><br>
-								<input type="radio" id="premium" name="gender" value="12345">
-								<label for="premium">Premium</label><br>
-								<input type="radio" id="excelium" name="gender" value="15400">
+								<input type="radio" id="standard" name="gender" value="7565" onchange ='residential()'>
+								<label for="standard">Standard</label>
+
+								<input type="radio" id="premium" name="gender" value="12345" onchange ='residential()'>
+								<label for="premium">Premium</label>
+
+								<input type="radio" id="excelium" name="gender" value="15400" onchange ='residential()'>
 								<label for="excelium">Excelium</label>
 							</div>
+
 							<div class='col-lg'>
-									<label for= 'res_nb'><br>Unit price for an elevator of the chosen line:</label>
-									<div id= 'reponse'>
-									</div>
-									
-								</div>
-							
-							<div class= 'row'>
+									<label for= 'res_nb'><br>Unit price:</label>
+									<div id= 'reponse'> </div>
+							</div>
+							<div class='col-lg'>
+								<label for= 'inst_costs_res'><br>Installation costs: ****CORRIGER</label>
+								<div id= 'inst_costs_res'> </div>
+							</div>
+							<div class='col-lg'>
+								<label for= 'total_costs_res'><br>Total costs:</label>
+								<div id= 'total_costs_res'> </div>
+							</div>
+							<!-- <div class= 'row'>
 								
-								
-									
-									
 									<p>The Result is : <br>
 									<span id='result'></span>
 								
-							</div>
+							</div> -->
 
 						</fieldset>
 								</form>
@@ -617,6 +619,8 @@
 		
 		//var nb_elevators_res = res_nb;
 
+		
+
 		//CALCULATES NB OF ELEVATORS AND COLUMNS
 		// var 	_res_nb 			= $('id=res_nb').val();			
 		
@@ -647,9 +651,85 @@
 		document.getElementById("result").innerHTML = num1 * num2;
 		//console.log(result)
 }
+		//MANAGE UNIT PRICE FOR CHOSEN LINE
+		$('#unit_price_standard').hide();
+		$('#unit_price_premium').hide();
+		$('#unit_price_excelium').hide();
 		
-		//function residential(){
+		var radioValueglobal = 0;
 
+		$("input[type='radio']").click(function(){
+            var radioValue = $("input[name='gender']:checked").val();
+			if(radioValue.id= 'standard'){
+				alert("Good choice! The Standard unit price is: $" + radioValue);
+				$('#reponse').html('$' + radioValue)
+			}
+			else if (radioValue.id= 'premium'){
+				alert("Very good choice! The Premium unit price is: $" + radioValue);
+				$('#reponse').html('$' + radioValue)
+			}
+			else if (radioValue.id= 'excelium'){
+				alert('Excellent choice!The Excelium unit price is: $' + radioValue);
+				$('#reponse').html('$' + radioValue)
+			}
+			radioValueglobal = radioValue;
+		});
+		
+		function residential(){
+			var nb_elevators_res = 0;
+			//var _inst_costs_res = 0;
+			_res_nb = document.getElementById('res_nb').value;
+			_res_flo = document.getElementById('res_flo').value;
+			_res_under = document.getElementById('res_under').value;
+			
+			res_avg = _res_nb/ _res_flo;
+			_nb_columns_res = _res_flo/20 + 1;
+			document.getElementById('nb_columns_res').innerHTML = Math.ceil(_nb_columns_res);
+
+			_nb_elevators_res = _nb_columns_res + (_res_nb/6);
+			document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
+
+			_inst_costs_res = window.radioValueglobal * 0.1;
+			console.log('REGARDEICI!!!', window.radioValueglobal);
+			document.getElementById('inst_costs_res').innerHTML = _inst_costs_res;
+			console.log('REGARDEICI!!!', _inst_costs_res);
+
+			_total_costs_res = _nb_columns_res*radioValueglobal + (_nb_columns_res*radioValueglobal)* 0.1;
+			document.getElementById('total_costs_res').innerHTML = _total_costs_res;
+			
+		}
+		function commercial(){
+		var nb_elevators_res = 0;
+		_com_shaft = document.getElementById('com_shaft').value;
+		_nb_columns_com = _com_shaft;
+		document.getElementById('nb_columns_res').innerHTML = Math.ceil(_nb_columns_com);
+
+		_nb_elevators_res = _com_shaft;
+		document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
+		
+		//faut corriger espacement pour rendre nb de columns visible en tout temps. 
+		//ensuite copier reste de res.
+
+
+		
+
+		// _com_nb = document.getElementById('com_nb').value;
+		// _com_flo = document.getElementById('com_nb').value;
+		// _com_under = document.getElementById('com_under').value;
+		// _com_parking = document.getElementById('com_parking').value;
+		// _com_shaft = document.getElementById('com_shaft').value;
+		// nb_elevators = _com_shaft;
+
+
+
+		}
+
+		function corporate(){
+		
+
+		}
+			//_inst_costs_res = unit_price_standard
+			
 
 			// var _building = $('#building option:selected').val();
 			// if (_building=='Residential'){
@@ -682,31 +762,8 @@
 	// 		alert("res_nb=" + res_nb);
 	// 	}
 	// });
-		//MANAGE UNIT PRICE FOR CHOSEN LINE
-		$('#unit_price_standard').hide();
-		$('#unit_price_premium').hide();
-		$('#unit_price_excelium').hide();
-
-		$("input[type='radio']").click(function(){
-            var radioValue = $("input[name='gender']:checked").val();
-			if(radioValue){
-				alert("Unit price for an elevator of the chosen line: $" + radioValue);
-				$('#reponse').html('$' + radioValue)
-			}
-		});
-			
-		// if(radioValue = '7565')
-			// if(radioValue = '12345')
-/*
-		$('#radio_buttons').on('change', function(){
-			var choice = $('#radio_buttons' option:selected').val();
-			if (choice == 'standard'){
-				$('unit_price_standard').show();
-				$('#unit_price_premium').hide();
-				$('#unit_price_excelium').hide();
-			}
-		});
-*/
+		
+		
 		</script>
 
 	
