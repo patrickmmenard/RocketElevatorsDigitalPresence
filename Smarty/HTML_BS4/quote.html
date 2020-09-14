@@ -262,14 +262,26 @@
 								</div>
 
 									<div class='row'>
-									<input class='col'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential()' >
-									<input class='col' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential()'>
-									<input class='col' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential()'>
+									<input class='col'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' >
+									<input class='col' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential(), total()'>
+									<input class='col' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential(), total()'>
+									
 									</div>
 
-								<div class='row'>
+								<!-- <div class='row'>
 									<div class='col'>
 										<input type='button' onClick='residential()' Value = 'Calculate elevators and columns'>	
+									</div> -->
+								<!-- </div> -->
+								<div class='row'>
+									<div class = 'col' >
+										<label>Number of elevators:</label>
+										<span id='nb_elevators_res'></span>
+									</div>
+								
+									<div class = 'col' >
+										<label>Number of columns:</label>
+										<span id='nb_columns_res'></span>
 									</div>
 								</div>
 							</div>
@@ -287,27 +299,44 @@
 										<div class='row'>
 											<div class='col'>
 											<label for= 'com_nb'>1. How many distinct businesses will there be?</label>
-											<input type= 'number' id='com_nb' value = '0' min='0' oninput='commercial()'>
+											
 											</div>
 
 											<div class='col'>
 											<label for= 'com_flo'>2. How many floors?</label>
-											<input type= 'number' id='com_flo' value='0' min='0' oninput='commercial()'>
+											
 											</div>
 
 											<div class='col'>
 											<label for= 'com_under'>3. How many underground floors?</label>
-											<input type= 'number' id= 'com_under' value='0' min='0' oninput='commercial()'>
+											
 											</div>
 										
 											<div class='col'>
 											<label for= 'com_parking'>4. How many parking places?</label>
-											<input type= 'number' id= 'com_parking' value='0' min='0' oninput='commercial()'>
+											
 											</div>
 									
 											<div class='col'>
 											<label for= 'com_asc'>5. How many elevators?</label>
-											<input type= 'number' id='com_shaft' value= '0' min='0' oninput='commercial()'>
+											
+											</div>
+											<div class='row'>
+												<input type= 'number' id='com_nb' value = '0' min='0' oninput='commercial(), total()'>
+												<input type= 'number' id='com_flo' value='0' min='0' oninput='commercial(), total()'>
+												<input type= 'number' id= 'com_under' value='0' min='0' oninput='commercial(), total()'>
+												<input type= 'number' id= 'com_parking' value='0' min='0' oninput='commercial(), total()'>
+												<input type= 'number' id='com_shaft' value= '0' min='0' oninput='commercial(), total()'>
+
+											</div>
+											<div class = 'col' >
+												<label>Number of elevators:</label>
+												<span id='nb_elevators_com'></span>
+											</div>
+										
+											<div class = 'col' >
+												<label>Number of columns:</label>
+												<span id='nb_columns_com'></span>
 											</div>
 										</div>
 									</div>
@@ -335,6 +364,17 @@
 											<input display: inline-block type='number' id='corp_max_person' value='0'>
 										</div>
 									</div class='row'>
+									<div class='row'>
+										<div class = 'col' >
+											<label>Number of elevators:</label>
+											<span id='nb_elevators_corp'></span>
+										</div>
+									
+										<div class = 'col' >
+											<label>Number of columns:</label>
+											<span id='nb_columns_corp'></span>
+										</div>
+									</div>
 									</div>
 
 									<div class='question' id= 'hyb_questions'>
@@ -364,16 +404,19 @@
 											<input type='number' id='hyb_max_hour' value='0'>
 										</div>
 									   </div>
+									   <div class='row'>
+										<div class = 'col' >
+											<label>Number of elevators:</label>
+											<span id='nb_elevators_hyb'></span>
+										</div>
+									
+										<div class = 'col' >
+											<label>Number of columns:</label>
+											<span id='hyb'></span>
+										</div>
 									</div>
-									<div class = 'col' >
-										<label>Number of elevators:</label>
-										<span id='nb_elevators_res'></span>
 									</div>
-								
-									<div class = 'col' >
-										<label>Number of columns:</label>
-										<span id='nb_columns_res'></span>
-									</div>
+									
 									</div>
 
 								<!--<div class="row">
@@ -387,13 +430,13 @@
 								<form id='radio_buttons' action="/action_page.php">
 								<p>Please select a product line.</p>
 								<div class='row'>
-								<input type="radio" id="standard" name="gender" value="7565" onchange ='residential()'>
+								<input type="radio" id="standard" name="gender" value="7565" onchange ='total()'>
 								<label for="standard">Standard</label>
 
-								<input type="radio" id="premium" name="gender" value="12345" onchange ='residential()'>
+								<input type="radio" id="premium" name="gender" value="12345" onchange ='total()'>
 								<label for="premium">Premium</label>
 
-								<input type="radio" id="excelium" name="gender" value="15400" onchange ='residential()'>
+								<input type="radio" id="excelium" name="gender" value="15400" onchange ='total()'>
 								<label for="excelium">Excelium</label>
 							</div>
 
@@ -402,12 +445,12 @@
 									<div id= 'reponse'> </div>
 							</div>
 							<div class='col-lg'>
-								<label for= 'inst_costs_res'><br>Installation costs: ****CORRIGER</label>
-								<div id= 'inst_costs_res'> </div>
+								<label for= 'inst_costs'><br>Installation costs:</label>
+								<div id= 'inst_costs'> </div>
 							</div>
 							<div class='col-lg'>
-								<label for= 'total_costs_res'><br>Total costs:</label>
-								<div id= 'total_costs_res'> </div>
+								<label for= 'total_costs'><br>Total costs:</label>
+								<div id= 'total_costs'> </div>
 							</div>
 							<!-- <div class= 'row'>
 								
@@ -610,7 +653,7 @@
 	
 		
 
-		// 	console.log('blabla', _res_nb)
+		
 
 			//$('#res_nb').on('change', function(){
 				//var _res_nb = document.getElementById('res_nb');
@@ -649,7 +692,7 @@
 		num1 = document.getElementById("firstNumber").value;
 		num2 = document.getElementById("secondNumber").value;
 		document.getElementById("result").innerHTML = num1 * num2;
-		//console.log(result)
+		
 }
 		//MANAGE UNIT PRICE FOR CHOSEN LINE
 		$('#unit_price_standard').hide();
@@ -661,22 +704,24 @@
 		$("input[type='radio']").click(function(){
             var radioValue = $("input[name='gender']:checked").val();
 			if(radioValue.id= 'standard'){
-				alert("Good choice! The Standard unit price is: $" + radioValue);
+				//alert("Good choice! The Standard unit price is: $" + radioValue);
 				$('#reponse').html('$' + radioValue)
 			}
 			else if (radioValue.id= 'premium'){
-				alert("Very good choice! The Premium unit price is: $" + radioValue);
+				//alert("Very good choice! The Premium unit price is: $" + radioValue);
 				$('#reponse').html('$' + radioValue)
 			}
 			else if (radioValue.id= 'excelium'){
-				alert('Excellent choice!The Excelium unit price is: $' + radioValue);
+				//alert('Excellent choice!The Excelium unit price is: $' + radioValue);
 				$('#reponse').html('$' + radioValue)
 			}
 			radioValueglobal = radioValue;
 		});
-		
+		var nb_columns_res_global = 0;
+
+
 		function residential(){
-			var nb_elevators_res = 0;
+			//var nb_elevators_res = 0;
 			//var _inst_costs_res = 0;
 			_res_nb = document.getElementById('res_nb').value;
 			_res_flo = document.getElementById('res_flo').value;
@@ -689,45 +734,74 @@
 			_nb_elevators_res = _nb_columns_res + (_res_nb/6);
 			document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
 
-			_inst_costs_res = window.radioValueglobal * 0.1;
-			console.log('REGARDEICI!!!', window.radioValueglobal);
-			document.getElementById('inst_costs_res').innerHTML = _inst_costs_res;
-			console.log('REGARDEICI!!!', _inst_costs_res);
+			nb_columns_res_global = Math.ceil(_nb_columns_res); //copier pour comm!
 
-			_total_costs_res = _nb_columns_res*radioValueglobal + (_nb_columns_res*radioValueglobal)* 0.1;
-			document.getElementById('total_costs_res').innerHTML = _total_costs_res;
-			
+			// console.log('radioValueglobal!!!', window.radioValueglobal);
+
+			// _inst_costs_res = (window.radioValueglobal * 0.1) * _nb_elevators_res;
+
+			// console.log('radioValueglobal!!!', window.radioValueglobal);
+
+			// document.getElementById('inst_costs').innerHTML = _inst_costs_res;
+
+			// console.log('_inst_costs_res!!!', _inst_costs_res);
+
+			// _total_costs_res = _nb_columns_res*radioValueglobal + (_nb_columns_res*radioValueglobal)* 0.1;
+			// document.getElementById('total_costs').innerHTML = _total_costs_res;
+			// console.log('_total_costs_res', _total_costs_res )
 		}
 		function commercial(){
-		var nb_elevators_res = 0;
+		
 		_com_shaft = document.getElementById('com_shaft').value;
-		_nb_columns_com = _com_shaft;
-		document.getElementById('nb_columns_res').innerHTML = Math.ceil(_nb_columns_com);
-
-		_nb_elevators_res = _com_shaft;
-		document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
 		
-		//faut corriger espacement pour rendre nb de columns visible en tout temps. 
-		//ensuite copier reste de res.
+		document.getElementById('nb_columns_com').innerHTML = Math.ceil(_com_shaft);
+		document.getElementById('nb_elevators_com').innerHTML = Math.ceil(_com_shaft);
 
+		// _inst_costs_com = (window.radioValueglobal * 0.1) * _com_shaft;
+		// document.getElementById('inst_costs').innerHTML = _inst_costs_com;
 
+		// _total_costs_com = _com_shaft * radioValueglobal + (_com_shaft*radioValueglobal) * 0.1;
+		// document.getElementById('total_costs').innerHTML = _total_costs_com;
 		
+		nb_columns_res_global = Math.ceil(_com_shaft);
+		}
 
-		// _com_nb = document.getElementById('com_nb').value;
-		// _com_flo = document.getElementById('com_nb').value;
-		// _com_under = document.getElementById('com_under').value;
-		// _com_parking = document.getElementById('com_parking').value;
-		// _com_shaft = document.getElementById('com_shaft').value;
-		// nb_elevators = _com_shaft;
-
-
+		function corp(){
+			
 
 		}
 
-		function corporate(){
-		
+
+		function reset_all(){
 
 		}
+
+		function total(){
+			
+			_costs= (window.radioValueglobal * window.nb_columns_res_global);
+			console.log('window.radioValueglobal', window.radioValueglobal);
+			console.log('window.nb_columns_res_global', window.nb_columns_res_global);
+
+			if(window.radioValueglobal == '7565'){
+				inst_costs =  (_costs*0.1);
+			}
+			else if(window.radioValueglobal == '12345'){
+				inst_costs = (_costs*0.13);
+			}
+			else if(window.radioValueglobal == '15400'){
+				inst_costs = (_costs*0.16);
+			}
+			total_costs = inst_costs + _costs;
+
+			document.getElementById('inst_costs').innerHTML = inst_costs;
+					
+			document.getElementById('total_costs').innerHTML = total_costs;
+
+		}
+		// function corporate(){
+		
+
+		// }
 			//_inst_costs_res = unit_price_standard
 			
 
