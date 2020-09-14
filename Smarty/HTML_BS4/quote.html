@@ -345,19 +345,19 @@
 										<div class='row'>
 										<div class='col'>
 											<label for='corp_nb'>How many renting businesses will there be?</label>
-											<input display: inline-block type='number' id= 'corp_nb' value = '0'>
+											<input display: inline-block type='number' id= 'corp_nb' value = '0' min='0' oninput='corp(), total()'>
 										</div>
 										<div class='col'>
 											<label for = 'corp_flo'>How many floors?</label>
-											<input display: inline-block type='number' id= 'corp_flo' value='0'>
+											<input display: inline-block type='number' id= 'corp_flo' value='0'min='0' oninput='corp(), total()'>
 										</div>
 										<div class='col'>
 											<label for='corp_under'>How many underground floors?</label>
-											<input display: inline-block type='number' id='corp_under' value='0'>
+											<input display: inline-block type='number' id='corp_under' value='0'min='0' oninput='corp(), total()'>
 										</div>
 										<div class='col'>
 											<label for='corp_parking'>How many parking places?</label>
-											<input display: inline-block  type='number' id='corp_parking' value='0'>
+											<input display: inline-block  type='number' id='corp_parking' value='0'min='0' oninput='corp(), total()'>
 										</div>
 										<div class='col'>
 											<label for='corp_max_person'>Maximal floor occupancy?</label>
@@ -385,23 +385,23 @@
 										</div>
 										<div class='col'>
 											<label for = 'hyb_flo'>How many floors?</label>
-											<input type='number' id= 'hyb_flo' value='0'>
+											<input type='number' id= 'hyb_flo' value='0' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
 										<div class='col'>
 											<label for='hyb_under'>How many underground floors?</label>
-											<input type='number' id='hyb_under' value='0'>
+											<input type='number' id='hyb_under' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
 										<div class='col'>
 											<label for='hyb_parking'>How many parking places?</label>
-											<input type='number' id='hyb_parking' value='0'>
+											<input type='number' id='hyb_parking' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
 										<div class='col'>
 											<label for='hyb_max_person'>Maximal floor occupancy?</label>
-											<input type='number' id='hyb_max_person' value='0'>
+											<input type='number' id='hyb_max_person' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
 										<div class='col'>
 											<label for='hyb_max_hour'>Maximal opening hours?</label>
-											<input type='number' id='hyb_max_hour' value='0'>
+											<input type='number' id='hyb_max_hour' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
 									   </div>
 									   <div class='row'>
@@ -412,7 +412,7 @@
 									
 										<div class = 'col' >
 											<label>Number of columns:</label>
-											<span id='hyb'></span>
+											<span id='nb_columns_hyb'></span>
 										</div>
 									</div>
 									</div>
@@ -728,13 +728,13 @@
 			_res_under = document.getElementById('res_under').value;
 			
 			res_avg = _res_nb/ _res_flo;
-			_nb_columns_res = _res_flo/20 + 1;
+			_nb_columns_res = Math.ceil(_res_flo/20);
 			document.getElementById('nb_columns_res').innerHTML = Math.ceil(_nb_columns_res);
 
 			_nb_elevators_res = _nb_columns_res + (_res_nb/6);
 			document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
 
-			nb_columns_res_global = Math.ceil(_nb_columns_res); //copier pour comm!
+			nb_columns_res_global = Math.ceil(_nb_elevators_res); //copier pour comm!
 
 			// console.log('radioValueglobal!!!', window.radioValueglobal);
 
@@ -750,6 +750,46 @@
 			// document.getElementById('total_costs').innerHTML = _total_costs_res;
 			// console.log('_total_costs_res', _total_costs_res )
 		}
+
+			function corp(){
+
+			_corp_flo = document.getElementById('corp_flo').value;
+			_corp_under = document.getElementById('corp_under').value;
+			
+			_corp_max_person = document.getElementById('corp_max_person').value;
+			corp_person_total = _corp_max_person * (_corp_flo + _corp_under);
+			
+			_nb_elevators_corp = corp_person_total/1000;
+			_nb_columns_corp = (_corp_flo + _corp_under)/20;
+
+			nb_avg_corp = _nb_elevators_corp/_nb_columns_corp;
+			_nb_elevators_corp_final = Math.ceil(nb_avg_corp* _nb_columns_corp);
+
+			document.getElementById('nb_elevators_corp').innerHTML = _nb_elevators_corp_final ;
+			document.getElementById('nb_columns_corp').innerHTML = _nb_columns_corp;
+
+			nb_columns_res_global = Math.ceil(_nb_elevators_corp_final );
+			}
+
+			function hyb(){
+
+			_hyb_flo = document.getElementById('hyb_flo').value;
+			_hyb_under = document.getElementById('hyb_under').value;
+
+			_hyb_max_person = document.getElementById('hyb_max_person').value;
+			hyb_person_total = _hyb_max_person * (_hyb_flo + _hyb_under);
+
+			_nb_elevators_hyb = hyb_person_total/1000;
+			_nb_columns_hyb = (_hyb_flo + _hyb_under)/20;
+
+			nb_avg_hyb = _nb_elevators_hyb/_nb_columns_hyb;
+			_nb_elevators_hyb_final = Math.ceil(nb_avg_hyb* _nb_columns_hyb);
+
+			document.getElementById('nb_elevators_hyb').innerHTML = _nb_elevators_hyb_final ;
+			document.getElementById('nb_columns_hyb').innerHTML = _nb_columns_hyb;
+
+			nb_columns_res_global = Math.ceil(_nb_elevators_hyb_final );
+			}
 		function commercial(){
 		
 		_com_shaft = document.getElementById('com_shaft').value;
@@ -763,13 +803,10 @@
 		// _total_costs_com = _com_shaft * radioValueglobal + (_com_shaft*radioValueglobal) * 0.1;
 		// document.getElementById('total_costs').innerHTML = _total_costs_com;
 		
-		nb_columns_res_global = Math.ceil(_com_shaft);
+		window.nb_columns_res_global = Math.ceil(_com_shaft);
 		}
-
-		function corp(){
-			
-
-		}
+		
+		
 
 
 		function reset_all(){
@@ -798,10 +835,7 @@
 			document.getElementById('total_costs').innerHTML = total_costs;
 
 		}
-		// function corporate(){
 		
-
-		// }
 			//_inst_costs_res = unit_price_standard
 			
 
