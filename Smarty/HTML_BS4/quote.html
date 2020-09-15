@@ -221,52 +221,42 @@
 					<h3>Let's Budget your Project! </h3>
 
 					<div class="row">
-								<form id='menu'>
-								<!--<form action="php/contact.php" method="post" enctype="multipart/form-data">-->
-								<fieldset>
-									<!--<input type="hidden" name="action" value="contact_send" />-->
-
-									<div class="row">
-										<div class="col-md-4">
-											<label for="contact_department">Building type</label>
-											
-											<select id='building' class="form-control pointer" style='width: 200px'  onchange='residential()'>
-												<option value="">--- Select ---</option>
-												<option value="Residential">Residential</option>
-												<option value="Commercial">Commercial</option>
-												<option value="Corporate">Corporate</option>
-												<option value='Hybrid'>Hybrid</option>
-												
-											</select>
-										</div>	
-									</div>
-								</form>
-								
-							<div id= 'res_questions'>
+						<form id='menu'>
+							<fieldset>
+								<div class="row">
+									<div class="col-md-4">
+										<label for="contact_department">Building type</label>			
+										<select id='building' class="form-control pointer" style='width: 200px'  onchange='residential()'>
+											<option value="">--- Select ---</option>
+											<option value="Residential">Residential</option>
+											<option value="Commercial">Commercial</option>
+											<option value="Corporate">Corporate</option>
+											<option value='Hybrid'>Hybrid</option>
+										</select>
+									</div>	
+								</div>
+							</fieldset>
+						</form>
+						<form id= 'form_all'>
+							<div id='res_questions'>
 								<div  class='question row'>
-										
-											
-											<div class='col-lg'>
-												<label for= 'res_nb' >1. How many apartments/units will there be?</label>
-											</div>
-											
-							
-											<div class='col-lg'>
-												<label for= 'res_flo' >2. How many floors?</label>
-											</div>
-
-											<div class='col-lg'>
-												<label for= 'res_under'>3. How many underground floors?</label>
-											</div>
-											 
+									<div class='col-lg'>
+										<label for= 'res_nb' >1. How many apartments/units will there be?</label>
+									</div>
+									<div class='col-lg'>
+										<label for= 'res_flo' >2. How many floors?</label>
+									</div>
+									<div class='col-lg'>
+										<label for= 'res_under'>3. How many underground floors?</label>
+									</div>	 
 								</div>
 
-									<div class='row'>
+								<div class='row'>
 									<input class='col form-control'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' >
 									<input class='col form-control' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential(), total()'>
 									<input class='col form-control' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential(), total()'>
 									
-									</div>
+								</div>
 
 								<!-- <div class='row'>
 									<div class='col'>
@@ -274,214 +264,177 @@
 									</div> -->
 								<!-- </div> -->
 								
-									<div class = 'col effacer' >
-										<label>Number of elevators:</label>
-										<span id='nb_elevators_res' ><input type='number' class ='form-control' id='nb_elevators_res'   readonly ></span>
-										
-									</div>
-									
-								
-									<div class = 'col effacer' >
-										<label>Number of columns:</label>
-										<span id='nb_columns_res'></span>
-									</div>
+								<div class = 'col effacer' >
+									<label>Number of elevators:</label>
+									<span id='' >
+										<input type='number' class ='form-control' id='nb_elevators_res' readonly >
+									</span>									
+								</div>
+								<div class = 'col' >
+									<label>Number of columns:</label>
+									<span>
+										<input readonly id='nb_columns_res'>
+									</span>
+								</div>
 								
 							</div>
 
-								<!-- <div>
-									1st Number : <input type="text" id="firstNumber" /><br>
-									2nd Number: <input type="text" id="secondNumber" /><br>
-									<input type="button" onClick="multiplyBy()" Value="Multiply" />
-									
-								</div> -->
-
-							<form id= 'form_all'>
-
-									<div id='com_questions' class='question'>
-										<div class='row'>
-											<div class='col'>
-											<label for= 'com_nb'>1. How many distinct businesses will there be?</label>
-											
-											</div>
-
-											<div class='col'>
-											<label for= 'com_flo'>2. How many floors?</label>
-											
-											</div>
-
-											<div class='col'>
-											<label for= 'com_under'>3. How many underground floors?</label>
-											
-											</div>
-										
-											<div class='col'>
-											<label for= 'com_parking'>4. How many parking places?</label>
-											
-											</div>
-									
-											<div class='col'>
-											<label for= 'com_asc'>5. How many elevators?</label>
-											
-											</div>
-											<div class='row '>
-												<input class ='form-control' type= 'number' id='com_nb' value = '0' min='0' oninput='commercial(), total()'>
-												<input class ='form-control' type= 'number' id='com_flo' value='0' min='0' oninput='commercial(), total()'>
-												<input class ='form-control' type= 'number' id= 'com_under' value='0' min='0' oninput='commercial(), total()'>
-												<input class ='form-control' type= 'number' id= 'com_parking' value='0' min='0' oninput='commercial(), total()'>
-												<input class ='form-control' type= 'number' id='com_shaft' value= '0' min='0' oninput='commercial(), total()'>
-
-											</div>
-											<div class = 'col' >
-												<label>Number of elevators:</label>
-												<!-- <span id='nb_elevators_com'></span> -->
-												<input class ='form-control' type='number' id='nb_elevators_com' readonly>
-											</div>
-										
-											<div class = 'col' >
-												<label>Number of columns:</label>
-												<span id='nb_columns_com'></span>
-											</div>
-										</div>
-									</div>
-
-									<div class='question' id= 'corp_questions'>
-										<div class='row'>
-										<div class='col'>
-											<label for='corp_nb'>How many renting businesses will there be?</label>
-											<input class ='form-control' display: inline-block type='number' id= 'corp_nb' value = '0' min='0' oninput='corp(), total()'>
-										</div>
-										<div class='col'>
-											<label for = 'corp_flo'>How many floors?</label>
-											<input class ='form-control' display: inline-block type='number' id= 'corp_flo' value='0'min='0' oninput='corp(), total()'>
-										</div>
-										<div class='col'>
-											<label for='corp_under'>How many underground floors?</label>
-											<input class ='form-control' display: inline-block type='number' id='corp_under' value='0'min='0' oninput='corp(), total()'>
-										</div>
-										<div class='col'>
-											<label for='corp_parking'>How many parking places?</label>
-											<input class ='form-control' display: inline-block  type='number' id='corp_parking' value='0'min='0' oninput='corp(), total()'>
-										</div>
-										<div class='col'>
-											<label for='corp_max_person'>Maximal floor occupancy?</label>
-											<input class ='form-control' display: inline-block type='number' id='corp_max_person' value='0' min='0' oninput='corp(), total()'>
-										</div>
-									</div class='row'>
-									<div class='row'>
-										<div class = 'col' >
-											<label>Number of elevators:</label>
-											<span id='nb_elevators_corp'></span>
-										</div>
-									
-										<div class = 'col' >
-											<label>Number of columns:</label>
-											<span id='nb_columns_corp'></span>
-										</div>
-									</div>
-									</div>
-
-									<div class='question' id= 'hyb_questions'>
-										<div class='row'>
-										<div class='col'>
-											<label for='hyb_nb'>How many distinct businesses will there be?</label>
-											<input class ='form-control' type='number' id= 'hyb_nb' value = '0'>
-										</div>
-										<div class='col'>
-											<label for = 'hyb_flo'>How many floors?</label>
-											<input class ='form-control' type='number' id= 'hyb_flo' value='0' value='0' min='0' oninput= 'hyb(), total()'>
-										</div>
-										<div class='col'>
-											<label for='hyb_under'>How many underground floors?</label>
-											<input class ='form-control' type='number' id='hyb_under' value='0' min='0' oninput= 'hyb(), total()'>
-										</div>
-										<div class='col'>
-											<label for='hyb_parking'>How many parking places?</label>
-											<input class ='form-control' type='number' id='hyb_parking' value='0' min='0' oninput= 'hyb(), total()'>
-										</div>
-										<div class='col'>
-											<label for='hyb_max_person'>Maximal floor occupancy?</label>
-											<input class ='form-control' type='number' id='hyb_max_person' value='0' min='0' oninput= 'hyb(), total()'>
-										</div>
-										<div class='col'>
-											<label for='hyb_max_hour'>Maximal opening hours?</label>
-											<input class ='form-control' type='number' id='hyb_max_hour' value='0' min='0' oninput= 'hyb(), total()'>
-										</div>
-									   </div>
-									   <div class='row'>
-										<div class = 'col' >
-											<label>Number of elevators:</label>
-											<span id='nb_elevators_hyb'></span>
-											
-										</div>
-									
-										<div class = 'col' >
-											<label>Number of columns:</label>
-											<span id='nb_columns_hyb'></span>
-										</div>
-									</div>
-									</div>
-									
-									</div>
-
-								<!--<div class="row">
-									<div class="col-md-12">
-										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> SEND MESSAGE</button>
-									</div>
-								</div>-->
-							</form>
-							<h3>From reliable Affordability all the way up to great Luxury </h3>
-
-								<form id='radio_buttons' action="/action_page.php">
-								<p>Please select a product line.</p>
+							<div id='com_questions' class='question'>
 								<div class='row'>
-								<input type="radio" id="standard" name="gender" value="7565" onchange ='total()'>
-								<label for="standard">Standard</label>
+									<div class='col'>
+										<label for= 'com_nb'>1. How many distinct businesses will there be?</label>
+									</div>
 
-								<input type="radio" id="premium" name="gender" value="12345" onchange ='total()'>
-								<label for="premium">Premium</label>
+									<div class='col'>
+										<label for= 'com_flo'>2. How many floors?</label>
+									</div>
 
-								<input type="radio" id="excelium" name="gender" value="15400" onchange ='total()'>
-								<label for="excelium">Excelium</label>
+									<div class='col'>
+										<label for= 'com_under'>3. How many underground floors?</label>
+									</div>
+								</div>
+							
+								<div class='col'>
+									<label for= 'com_asc'>5. How many elevators?</label>
+								</div>
+								<div class='row '>
+									<input class ='form-control' type= 'number' id='com_nb' value = '0' min='0' oninput='commercial(), total()'>
+									<input class ='form-control' type= 'number' id='com_flo' value='0' min='0' oninput='commercial(), total()'>
+									<input class ='form-control' type= 'number' id= 'com_under' value='0' min='0' oninput='commercial(), total()'>
+									<input class ='form-control' type= 'number' id= 'com_parking' value='0' min='0' oninput='commercial(), total()'>
+									<input class ='form-control' type= 'number' id='com_shaft' value= '0' min='0' oninput='commercial(), total()'>
+								</div>
+								<div class = 'col' >
+									<label>Number of elevators:</label>
+									<!-- <span id='nb_elevators_com'></span> -->
+									<input class ='form-control' type='number' id='nb_elevators_com' readonly>
+								</div>
+							
+								<div class = 'col' >
+									<label>Number of columns:</label>
+									<span id='nb_columns_com'></span>
+								</div>
 							</div>
-
-							<div class='col-lg'>
-									<label for= 'res_nb'><br>Unit price:</label>
-									<div id= 'reponse'> </div>
-							</div>
-							<div class='col-lg'>
-								<label for= 'inst_costs'><br>Installation costs:</label>
-								<div id= 'inst_costs'> </div>
-							</div>
-							<div class='col-lg'>
-								<label for= 'total_costs'><br>Total costs:</label>
-								<div id= 'total_costs'> </div>
-							</div>
-							<!-- <div class= 'row'>
+						
+							<div class='question' id='corp_questions'>
+								<div class='row'>
+									<div class='col'>
+										<label for='corp_nb'>How many renting businesses will there be?</label>
+										<input class ='form-control' display: inline-block type='number' id= 'corp_nb' value = '0' min='0' oninput='corp(), total()'>
+									</div>
+									<div class='col'>
+										<label for = 'corp_flo'>How many floors?</label>
+										<input class ='form-control' display: inline-block type='number' id= 'corp_flo' value='0'min='0' oninput='corp(), total()'>
+									</div>
+									<div class='col'>
+										<label for='corp_under'>How many underground floors?</label>
+										<input class ='form-control' display: inline-block type='number' id='corp_under' value='0'min='0' oninput='corp(), total()'>
+									</div>
+									<div class='col'>
+										<label for='corp_parking'>How many parking places?</label>
+										<input class ='form-control' display: inline-block  type='number' id='corp_parking' value='0'min='0' oninput='corp(), total()'>
+									</div>
+									<div class='col'>
+										<label for='corp_max_person'>Maximal floor occupancy?</label>
+										<input class ='form-control' display: inline-block type='number' id='corp_max_person' value='0' min='0' oninput='corp(), total()'>
+									</div>
+								</div>
+								<div class='row'>
+									<div class = 'col' >
+										<label>Number of elevators:</label>
+										<span id='nb_elevators_corp'></span>
+									</div>
 								
-									<p>The Result is : <br>
-									<span id='result'></span>
-								
-							</div> -->
+									<div class = 'col' >
+										<label>Number of columns:</label>
+										<span id='nb_columns_corp'></span>
+									</div>lue='0' min='0' oninput= 'residential(), total()'>
+								</div>
+							</div>
+							<div class='question' id= 'hyb_questions'>
+								<div class='row'>
+									<div class='col'>
+										<label for='hyb_nb'>How many distinct businesses will there be?</label>
+										<input class ='form-control' type='number' id= 'hyb_nb' value = '0'>
+									</div>
+									<div class='col'>
+										<label for = 'hyb_flo'>How many floors?</label>
+										<input class ='form-control' type='number' id= 'hyb_flo' value='0' value='0' min='0' oninput= 'hyb(), total()'>
+									</div>
+									<div class='col'>
+										<label for='hyb_under'>How many underground floors?</label>
+										<input class ='form-control' type='number' id='hyb_under' value='0' min='0' oninput= 'hyb(), total()'>
+									</div>
+									<div class='col'>
+										<label for='hyb_parking'>How many parking places?</label>
+										<input class ='form-control' type='number' id='hyb_parking' value='0' min='0' oninput= 'hyb(), total()'>
+									</div>
+									<div class='col'>
+										<label for='hyb_max_person'>Maximal floor occupancy?</label>
+										<input class ='form-control' type='number' id='hyb_max_person' value='0' min='0' oninput= 'hyb(), total()'>
+									</div>
+									<div class='col'>
+										<label for='hyb_max_hour'>Maximal opening hours?</label>
+										<input class ='form-control' type='number' id='hyb_max_hour' value='0' min='0' oninput= 'hyb(), total()'>
+									</div>
+								</div>
+								<div class='row'>
+									<div class = 'col' >
+										<label>Number of elevators:</label>
+										<span id='nb_elevators_hyb'></span>	
+									</div>
+							
+									<div class = 'col' >
+										<label>Number of columns:</label>
+										<span id='nb_columns_hyb'></span>
+									</div>
+								</div>
+							</div>	
 
-						</fieldset>
-								</form>
-							</form>
-						</div>
-					
 
 							
+							<div id='radio_buttons'>
+								<p>Please seliect a product line.</p>
+								<div class='row'>
+									<input type="radio" id="standard" name="gender" value="7565" onchange ='total()'>
+									<label for="standard">Standard</label>
 
+									<input type="radio" id="premium" name="gender" value="12345" onchange ='total()'>
+									<label for="premium">Premium</label>
 
-
-						
-						<!-- /FORM -->
-
-
+									<input type="radio" id="excelium" name="gender" value="15400" onchange ='total()'>
+									<label for="excelium">Excelium</label>
+								</div>
+							</div>
+							<div class="results">
+								<div class='col-lg'>
+									<label for= 'res_nb'><br>Unit price:</label>
+									<div id= 'reponse'> </div>
+								</div>
+								<div class='col-lg'>
+									<label for= 'inst_costs'><br>Installation costs:</label>
+									<div id= 'inst_costs'> </div>
+								</div>
+								<div class='col-lg'>
+									<label for= 'total_costs'><br>Total costs:</label>
+									<div id= 'total_costs'> </div>
+								</div>
+							</div>
+							
+							
+								<!-- <div class= 'row'>span
+									
+										<p>The Result is : <br>
+										<span id='result'></span>
+									
+								</div> -->
+						</form>
 					</div>
-
+						<!-- /FORM -->
 				</div>
 			</section>
-			
+			<h3>From reliable Affordability all the way up to great Luxury </h3>
+			<button style="border: 3px solid;" type="button" onclick="reset_all()">TEST</button>
 			
 
 			<!-- /QUOTE -->
@@ -524,15 +477,7 @@
 			<footer id="footer">
 				<div class="container">
 
-
-					<div class="row">
-
-						<!-- col #1 -->
-						<div class="col-md-8">
-
-							<h3 class="letter-spacing-1">WHY US?</h3>
-
-							<!-- Small Description -->
+					span
 							<p>
 								Rocket Elevators is the largest subsidiary of Rocket Corp. and specialises in elevators for social and economic infrastructure projects, including high-rise developments, airport terminals, luxury villas and iconic landmarks.
 							</p>
@@ -588,7 +533,7 @@
 
 		<!-- SCROLL TO TOP -->
 		<a href="#" id="toTop"></a>
-
+		`
 
 		<!-- PRELOADER -->
 		<div id="preloader">
@@ -614,21 +559,25 @@
 		<!--MY SCRIPT-->
 		
 		<script>
+
 		//MANAGE QUESTIONS
 		$('#res_questions').hide();
 		$('#com_questions').hide();
 		$('#corp_questions').hide();
 		$('#hyb_questions').hide();
+		$('#radio_buttons').hide();
+		$('.results').hide();
 
 /* $(selector).show(speed,easing,callback) */
 
 		$('#building').on('change', function(){
+			$('#radio_buttons').show();
+			$('.results').show();
+			reset_all();
 			var chosen = $('#building option:selected').val();
-			
+			console.log(chosen)
 			if (chosen == 'Residential'){
 				$('#res_questions').show();
-			
-			
 				$('#com_questions').hide();
 				$('#corp_questions').hide();
 				$('#hyb_questions').hide();
@@ -636,13 +585,11 @@
 				$('#res_nb').val('0');
 				$('#res_flo').val('0');
 				$('#res_under').val('0');
-				$('#nb_columns_res').val('0'); //marche pas
-				$("#building")[0].reset(); //marche pas
+				// $('#nb_columns_res').val('0'); //marche pas
+				// $("#building")[0].reset(); //marche pas
 				$('#nb_elevators_res').empty();
-				$('nb_columns_res').empty();
+				// $('nb_columns_res').empty();
 				$('.effacer').empty();
-				
-				
 			}
 
 			else if (chosen == 'Commercial'){
@@ -671,50 +618,12 @@
 		
 		});
 
-	
-		
-
-		
-
-			//$('#res_nb').on('change', function(){
-				//var _res_nb = document.getElementById('res_nb');
-			//}
-
-		
-		//var nb_elevators_res = res_nb;
-
-		
-
-		//CALCULATES NB OF ELEVATORS AND COLUMNS
-		// var 	_res_nb 			= $('id=res_nb').val();			
-		
-		// // 		// _res_flo			= $('#res_flo').val()				||0				//nb of floors
-		// // 		// _res_under			= $('#res_under').val()				||0				//nb of underground floors
-		// // 		// _com_nb				= $('#com_nb').val()				||0				//
-		// // 		// _com_flo			= $('#com_flo').val()				||0				//
-		// // 		// _com_under			= $('#com_under').val()				||0				//
-		// var 	_nb_asc				=$("input[id=res_nb]:change").val();
-		// // $('#nb_elevators').html(_nb_asc)
-
-		
-		//Ebauche pour afficher...principe...
-		// $("input[type='number']").change(function(){
-		// 	var _res_nb = document.getElementById('res_nb');
-		// 	var _nb_asc = _res_nb;
-		// 	if(_nb_asc){
-		// 		$('#nb_el').html(_nb_asc)
-		// 	}	
-		// });
-
-		// RESIDENTIAL
-		//siehe Beispiel hier: https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-10.php 
 		function multiplyBy()
-{
-		num1 = document.getElementById("firstNumber").value;
-		num2 = document.getElementById("secondNumber").value;
-		document.getElementById("result").innerHTML = num1 * num2;
-		
-}
+		{
+			num1 = document.getElementById("firstNumber").value;
+			num2 = document.getElementById("secondNumber").value;
+			document.getElementById("result").innerHTML = num1 * num2;
+		}
 		//MANAGE UNIT PRICE FOR CHOSEN LINE
 		$('#unit_price_standard').hide();
 		$('#unit_price_premium').hide();
@@ -754,7 +663,7 @@
 			
 			res_avg = parseInt(_res_nb)/ parseInt(_res_flo);
 			_nb_columns_res = Math.ceil(_res_flo/20); //sollte ich DIESEN math.ceil entfernen???
-			document.getElementById('nb_columns_res').innerHTML = Math.ceil(_nb_columns_res);
+			document.getElementById('nb_columns_res').value = Math.ceil(_nb_columns_res);
 
 
 			_nb_elevators_res = parseInt(res_avg) - parseInt(_nb_columns_res);
@@ -777,34 +686,34 @@
 			// console.log('_total_costs_res', _total_costs_res )
 		}
 
-			function corp(){
+		function corp(){
 
-			_corp_flo = document.getElementById('corp_flo').value;
-			
-			_corp_under = document.getElementById('corp_under').value;
-			
-			corp_sum = parseInt(_corp_flo) + parseInt(_corp_under);
-			
-			_corp_max_person = document.getElementById('corp_max_person').value;
-			
-			corp_person_total = parseInt(_corp_max_person) * parseInt(corp_sum);
-			
-			_nb_elevators_corp = Math.ceil(corp_person_total/1000);
-			
-			_nb_columns_corp = Math.ceil(corp_sum /20);
-			
-			nb_avg_corp = Math.ceil(parseInt(_nb_elevators_corp)/parseInt(_nb_columns_corp));
-			
-			_nb_elevators_corp_final = Math.ceil(parseInt(nb_avg_corp) * parseInt(_nb_columns_corp));
-			
-			document.getElementById('nb_elevators_corp').innerHTML = _nb_elevators_corp_final ;
-			document.getElementById('nb_columns_corp').innerHTML = _nb_columns_corp;
-			
-			nb_columns_res_global = _nb_elevators_corp_final;
+		_corp_flo = document.getElementById('corp_flo').value;
+		
+		_corp_under = document.getElementById('corp_under').value;
+		
+		corp_sum = parseInt(_corp_flo) + parseInt(_corp_under);
+		
+		_corp_max_person = document.getElementById('corp_max_person').value;
+		
+		corp_person_total = parseInt(_corp_max_person) * parseInt(corp_sum);
+		
+		_nb_elevators_corp = Math.ceil(corp_person_total/1000);
+		
+		_nb_columns_corp = Math.ceil(corp_sum /20);
+		
+		nb_avg_corp = Math.ceil(parseInt(_nb_elevators_corp)/parseInt(_nb_columns_corp));
+		
+		_nb_elevators_corp_final = Math.ceil(parseInt(nb_avg_corp) * parseInt(_nb_columns_corp));
+		
+		document.getElementById('nb_elevators_corp').innerHTML = _nb_elevators_corp_final ;
+		document.getElementById('nb_columns_corp').innerHTML = _nb_columns_corp;
+		
+		nb_columns_res_global = _nb_elevators_corp_final;
 
-			}
+		}
 
-			function hyb(){
+		function hyb(){
 
 			_hyb_flo = document.getElementById('hyb_flo').value;
 
@@ -831,8 +740,6 @@
 
 			}
 
-			
-
 		function commercial(){
 		
 		_com_shaft = document.getElementById('com_shaft').value;
@@ -850,23 +757,19 @@
 		}
 		
 		function reset_all(){
-
-		document.getElementById('form_all').reset(); //FUNKTIONIERT! NICHT LOESCHEN!!!
-		_nb_elevators_res.value = 0;
-		document.getElementById('radio_buttons').reset();
-		//var radioValueglobal = 0;
-		
-		// var x = document.getElementById('nb_elevators_com').value;
-		// x = 0;
-		//window._com_shaft = 0; ///es ZEIGT ES AN. also muss ich an solchen Variablen arbeiten, NICHT AN DEREN IDS!!!
-
-		
-
-		//window.inst_costs1 = 0;
-		//document.getElementById('com_shaft').value = 0;
-		//document.getElementById('total_costs').reset();
-		
-		//document.getElementById('total_costs').innerHTML = 0;
+			document.getElementById('form_all').reset(); //FUNKTIONIERT! NICHT LOESCHEN!!!
+			// _nb_elevators_res.value = 0;
+			// document.getElementById('radio_buttons').reset();
+			//var radioValueglobal = 0;
+			
+			// var x = document.getElementById('nb_elevators_com').value;
+			// x = 0;
+			//window._com_shaft = 0; ///es ZEIGT ES AN. also muss ich an solchen Variablen arbeiten, NICHT AN DEREN IDS!!!
+			//window.inst_costs1 = 0;
+			//document.getElementById('com_shaft').value = 0;
+			//document.getElementById('total_costs').reset();
+			
+			//document.getElementById('total_costs').innerHTML = 0;
 
 		}
 
