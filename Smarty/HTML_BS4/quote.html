@@ -361,7 +361,7 @@
 										</div>
 										<div class='col'>
 											<label for='corp_max_person'>Maximal floor occupancy?</label>
-											<input display: inline-block type='number' id='corp_max_person' value='0'>
+											<input display: inline-block type='number' id='corp_max_person' value='0' min='0' oninput='corp(), total()'>
 										</div>
 									</div class='row'>
 									<div class='row'>
@@ -717,21 +717,21 @@
 			}
 			radioValueglobal = radioValue;
 		});
+
 		var nb_columns_res_global = 0;
 
 
 		function residential(){
-			//var nb_elevators_res = 0;
-			//var _inst_costs_res = 0;
+			
 			_res_nb = document.getElementById('res_nb').value;
 			_res_flo = document.getElementById('res_flo').value;
 			_res_under = document.getElementById('res_under').value;
 			
-			res_avg = _res_nb/ _res_flo;
-			_nb_columns_res = Math.ceil(_res_flo/20);
+			res_avg = parseInt(_res_nb)/ parseInt(_res_flo);
+			_nb_columns_res = Math.ceil(_res_flo/20); //sollte ich DIESEN math.ceil entfernen???
 			document.getElementById('nb_columns_res').innerHTML = Math.ceil(_nb_columns_res);
 
-			_nb_elevators_res = _nb_columns_res + (_res_nb/6);
+			_nb_elevators_res = parseInt(res_avg) - parseInt(_nb_columns_res);
 			document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
 
 			nb_columns_res_global = Math.ceil(_nb_elevators_res); //copier pour comm!
@@ -754,21 +754,36 @@
 			function corp(){
 
 			_corp_flo = document.getElementById('corp_flo').value;
+			console.log('_corp_flo', _corp_flo);
+
 			_corp_under = document.getElementById('corp_under').value;
-			
+			console.log('_corp_under', _corp_under);
+			corp_sum = parseInt(_corp_flo) + parseInt(_corp_under);
+			console.log('corp_sum', corp_sum);
+
 			_corp_max_person = document.getElementById('corp_max_person').value;
-			corp_person_total = _corp_max_person * (_corp_flo + _corp_under);
 			
-			_nb_elevators_corp = corp_person_total/1000;
-			_nb_columns_corp = (_corp_flo + _corp_under)/20;
 
-			nb_avg_corp = _nb_elevators_corp/_nb_columns_corp;
-			_nb_elevators_corp_final = Math.ceil(nb_avg_corp* _nb_columns_corp);
+			corp_person_total = parseInt(_corp_max_person) * parseInt(corp_sum);
+			console.log('corp_person_total', corp_person_total);
 
+			_nb_elevators_corp = Math.ceil(corp_person_total/1000);
+			console.log('_nb_elevators_corp', _nb_elevators_corp);
+
+			_nb_columns_corp = Math.ceil(corp_sum /20);
+			console.log('_nb_columns_corp', _nb_columns_corp);
+
+			nb_avg_corp = Math.ceil(parseInt(_nb_elevators_corp)/parseInt(_nb_columns_corp));
+			console.log('nb_avg_corp', nb_avg_corp);
+
+			_nb_elevators_corp_final = Math.ceil(parseInt(nb_avg_corp) * parseInt(_nb_columns_corp));
+			console.log('_nb_elevators_corp_final', _nb_elevators_corp_final);
 			document.getElementById('nb_elevators_corp').innerHTML = _nb_elevators_corp_final ;
 			document.getElementById('nb_columns_corp').innerHTML = _nb_columns_corp;
+			
+			nb_columns_res_global = _nb_elevators_corp_final;
 
-			nb_columns_res_global = Math.ceil(_nb_elevators_corp_final );
+			
 			}
 
 			function hyb(){
@@ -783,13 +798,14 @@
 			_nb_columns_hyb = (_hyb_flo + _hyb_under)/20;
 
 			nb_avg_hyb = _nb_elevators_hyb/_nb_columns_hyb;
-			_nb_elevators_hyb_final = Math.ceil(nb_avg_hyb* _nb_columns_hyb);
+			_nb_elevators_hyb_final = Math.ceil(nb_avg_hyb * _nb_columns_hyb);
 
 			document.getElementById('nb_elevators_hyb').innerHTML = _nb_elevators_hyb_final ;
 			document.getElementById('nb_columns_hyb').innerHTML = _nb_columns_hyb;
 
 			nb_columns_res_global = Math.ceil(_nb_elevators_hyb_final );
 			}
+
 		function commercial(){
 		
 		_com_shaft = document.getElementById('com_shaft').value;
@@ -797,12 +813,7 @@
 		document.getElementById('nb_columns_com').innerHTML = Math.ceil(_com_shaft);
 		document.getElementById('nb_elevators_com').innerHTML = Math.ceil(_com_shaft);
 
-		// _inst_costs_com = (window.radioValueglobal * 0.1) * _com_shaft;
-		// document.getElementById('inst_costs').innerHTML = _inst_costs_com;
-
-		// _total_costs_com = _com_shaft * radioValueglobal + (_com_shaft*radioValueglobal) * 0.1;
-		// document.getElementById('total_costs').innerHTML = _total_costs_com;
-		
+				
 		window.nb_columns_res_global = Math.ceil(_com_shaft);
 		}
 		
@@ -828,7 +839,7 @@
 			else if(window.radioValueglobal == '15400'){
 				inst_costs = (_costs*0.16);
 			}
-			total_costs = inst_costs + _costs;
+			total_costs = parseInt(inst_costs) + parseInt(_costs);
 
 			document.getElementById('inst_costs').innerHTML = inst_costs;
 					
