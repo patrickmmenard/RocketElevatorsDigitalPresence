@@ -221,7 +221,7 @@
 					<h3>Let's Budget your Project! </h3>
 
 					<div class="row">
-								<form>
+								<form id='menu'>
 								<!--<form action="php/contact.php" method="post" enctype="multipart/form-data">-->
 								<fieldset>
 									<!--<input type="hidden" name="action" value="contact_send" />-->
@@ -230,7 +230,7 @@
 										<div class="col-md-4">
 											<label for="contact_department">Building type</label>
 											
-											<select id='building' class="form-control pointer" style='width: 200px'  onchange=''>
+											<select id='building' class="form-control pointer" style='width: 200px'  onchange='residential()'>
 												<option value="">--- Select ---</option>
 												<option value="Residential">Residential</option>
 												<option value="Commercial">Commercial</option>
@@ -262,9 +262,9 @@
 								</div>
 
 									<div class='row'>
-									<input class='col'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' >
-									<input class='col' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential(), total()'>
-									<input class='col' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential(), total()'>
+									<input class='col form-control'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' >
+									<input class='col form-control' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential(), total()'>
+									<input class='col form-control' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential(), total()'>
 									
 									</div>
 
@@ -273,17 +273,19 @@
 										<input type='button' onClick='residential()' Value = 'Calculate elevators and columns'>	
 									</div> -->
 								<!-- </div> -->
-								<div class='row'>
-									<div class = 'col' >
-										<label>Number of elevators:</label>
-										<span id='nb_elevators_res'></span>
-									</div>
 								
-									<div class = 'col' >
+									<div class = 'col effacer' >
+										<label>Number of elevators:</label>
+										<span id='nb_elevators_res' ><input type='number' class ='form-control' id='nb_elevators_res'   readonly ></span>
+										
+									</div>
+									
+								
+									<div class = 'col effacer' >
 										<label>Number of columns:</label>
 										<span id='nb_columns_res'></span>
 									</div>
-								</div>
+								
 							</div>
 
 								<!-- <div>
@@ -293,7 +295,7 @@
 									
 								</div> -->
 
-							
+							<form id= 'form_all'>
 
 									<div id='com_questions' class='question'>
 										<div class='row'>
@@ -321,17 +323,18 @@
 											<label for= 'com_asc'>5. How many elevators?</label>
 											
 											</div>
-											<div class='row'>
-												<input type= 'number' id='com_nb' value = '0' min='0' oninput='commercial(), total()'>
-												<input type= 'number' id='com_flo' value='0' min='0' oninput='commercial(), total()'>
-												<input type= 'number' id= 'com_under' value='0' min='0' oninput='commercial(), total()'>
-												<input type= 'number' id= 'com_parking' value='0' min='0' oninput='commercial(), total()'>
-												<input type= 'number' id='com_shaft' value= '0' min='0' oninput='commercial(), total()'>
+											<div class='row '>
+												<input class ='form-control' type= 'number' id='com_nb' value = '0' min='0' oninput='commercial(), total()'>
+												<input class ='form-control' type= 'number' id='com_flo' value='0' min='0' oninput='commercial(), total()'>
+												<input class ='form-control' type= 'number' id= 'com_under' value='0' min='0' oninput='commercial(), total()'>
+												<input class ='form-control' type= 'number' id= 'com_parking' value='0' min='0' oninput='commercial(), total()'>
+												<input class ='form-control' type= 'number' id='com_shaft' value= '0' min='0' oninput='commercial(), total()'>
 
 											</div>
 											<div class = 'col' >
 												<label>Number of elevators:</label>
-												<span id='nb_elevators_com'></span>
+												<!-- <span id='nb_elevators_com'></span> -->
+												<input class ='form-control' type='number' id='nb_elevators_com' readonly>
 											</div>
 										
 											<div class = 'col' >
@@ -345,23 +348,23 @@
 										<div class='row'>
 										<div class='col'>
 											<label for='corp_nb'>How many renting businesses will there be?</label>
-											<input display: inline-block type='number' id= 'corp_nb' value = '0' min='0' oninput='corp(), total()'>
+											<input class ='form-control' display: inline-block type='number' id= 'corp_nb' value = '0' min='0' oninput='corp(), total()'>
 										</div>
 										<div class='col'>
 											<label for = 'corp_flo'>How many floors?</label>
-											<input display: inline-block type='number' id= 'corp_flo' value='0'min='0' oninput='corp(), total()'>
+											<input class ='form-control' display: inline-block type='number' id= 'corp_flo' value='0'min='0' oninput='corp(), total()'>
 										</div>
 										<div class='col'>
 											<label for='corp_under'>How many underground floors?</label>
-											<input display: inline-block type='number' id='corp_under' value='0'min='0' oninput='corp(), total()'>
+											<input class ='form-control' display: inline-block type='number' id='corp_under' value='0'min='0' oninput='corp(), total()'>
 										</div>
 										<div class='col'>
 											<label for='corp_parking'>How many parking places?</label>
-											<input display: inline-block  type='number' id='corp_parking' value='0'min='0' oninput='corp(), total()'>
+											<input class ='form-control' display: inline-block  type='number' id='corp_parking' value='0'min='0' oninput='corp(), total()'>
 										</div>
 										<div class='col'>
 											<label for='corp_max_person'>Maximal floor occupancy?</label>
-											<input display: inline-block type='number' id='corp_max_person' value='0' min='0' oninput='corp(), total()'>
+											<input class ='form-control' display: inline-block type='number' id='corp_max_person' value='0' min='0' oninput='corp(), total()'>
 										</div>
 									</div class='row'>
 									<div class='row'>
@@ -381,33 +384,34 @@
 										<div class='row'>
 										<div class='col'>
 											<label for='hyb_nb'>How many distinct businesses will there be?</label>
-											<input type='number' id= 'hyb_nb' value = '0'>
+											<input class ='form-control' type='number' id= 'hyb_nb' value = '0'>
 										</div>
 										<div class='col'>
 											<label for = 'hyb_flo'>How many floors?</label>
-											<input type='number' id= 'hyb_flo' value='0' value='0' min='0' oninput= 'hyb(), total()'>
+											<input class ='form-control' type='number' id= 'hyb_flo' value='0' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
 										<div class='col'>
 											<label for='hyb_under'>How many underground floors?</label>
-											<input type='number' id='hyb_under' value='0' min='0' oninput= 'hyb(), total()'>
+											<input class ='form-control' type='number' id='hyb_under' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
 										<div class='col'>
 											<label for='hyb_parking'>How many parking places?</label>
-											<input type='number' id='hyb_parking' value='0' min='0' oninput= 'hyb(), total()'>
+											<input class ='form-control' type='number' id='hyb_parking' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
 										<div class='col'>
 											<label for='hyb_max_person'>Maximal floor occupancy?</label>
-											<input type='number' id='hyb_max_person' value='0' min='0' oninput= 'hyb(), total()'>
+											<input class ='form-control' type='number' id='hyb_max_person' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
 										<div class='col'>
 											<label for='hyb_max_hour'>Maximal opening hours?</label>
-											<input type='number' id='hyb_max_hour' value='0' min='0' oninput= 'hyb(), total()'>
+											<input class ='form-control' type='number' id='hyb_max_hour' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
 									   </div>
 									   <div class='row'>
 										<div class = 'col' >
 											<label>Number of elevators:</label>
 											<span id='nb_elevators_hyb'></span>
+											
 										</div>
 									
 										<div class = 'col' >
@@ -461,7 +465,7 @@
 
 						</fieldset>
 								</form>
-
+							</form>
 						</div>
 					
 
@@ -620,18 +624,35 @@
 
 		$('#building').on('change', function(){
 			var chosen = $('#building option:selected').val();
+			
 			if (chosen == 'Residential'){
 				$('#res_questions').show();
+			
+			
 				$('#com_questions').hide();
 				$('#corp_questions').hide();
 				$('#hyb_questions').hide();
+				$('#nb_elevators_res').val('0');
+				$('#res_nb').val('0');
+				$('#res_flo').val('0');
+				$('#res_under').val('0');
+				$('#nb_columns_res').val('0'); //marche pas
+				$("#building")[0].reset(); //marche pas
+				$('#nb_elevators_res').empty();
+				$('nb_columns_res').empty();
+				$('.effacer').empty();
+				
+				
 			}
 
 			else if (chosen == 'Commercial'){
+				residential();
 				$('#res_questions').hide();
 				$('#com_questions').show();
 				$('#corp_questions').hide();
 				$('#hyb_questions').hide();
+				$("#menu.frm")[0].reset();//marche pas
+				$("#building")[0].reset();//marche pas
 			}
 
 			else if (chosen == 'Corporate'){
@@ -705,15 +726,18 @@
             var radioValue = $("input[name='gender']:checked").val();
 			if(radioValue.id= 'standard'){
 				//alert("Good choice! The Standard unit price is: $" + radioValue);
-				$('#reponse').html('$' + radioValue)
+				radioValue1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(radioValue)
+				$('#reponse').html(radioValue1)
 			}
 			else if (radioValue.id= 'premium'){
 				//alert("Very good choice! The Premium unit price is: $" + radioValue);
-				$('#reponse').html('$' + radioValue)
+				radioValue1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(radioValue)
+				$('#reponse').html('$' + radioValue1)
 			}
 			else if (radioValue.id= 'excelium'){
 				//alert('Excellent choice!The Excelium unit price is: $' + radioValue);
-				$('#reponse').html('$' + radioValue)
+				radioValue1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(radioValue)
+				$('#reponse').html('$' + radioValue1)
 			}
 			radioValueglobal = radioValue;
 		});
@@ -727,9 +751,11 @@
 			_res_flo = document.getElementById('res_flo').value;
 			_res_under = document.getElementById('res_under').value;
 			
+			
 			res_avg = parseInt(_res_nb)/ parseInt(_res_flo);
 			_nb_columns_res = Math.ceil(_res_flo/20); //sollte ich DIESEN math.ceil entfernen???
 			document.getElementById('nb_columns_res').innerHTML = Math.ceil(_nb_columns_res);
+
 
 			_nb_elevators_res = parseInt(res_avg) - parseInt(_nb_columns_res);
 			document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
@@ -810,6 +836,7 @@
 		function commercial(){
 		
 		_com_shaft = document.getElementById('com_shaft').value;
+		//document.getElementById('nb_elevators_com').innerHTML = 0;
 		
 		document.getElementById('nb_columns_com').innerHTML = Math.ceil(_com_shaft);
 		document.getElementById('nb_elevators_com').innerHTML = Math.ceil(_com_shaft);
@@ -818,18 +845,35 @@
 		window.nb_columns_res_global = Math.ceil(_com_shaft);
 		}
 		
+		function reset_res(){
+			document.getElementById('nb_elevators_res').value() = 0;
+		}
+		
+		function reset_all(){
+
+		document.getElementById('form_all').reset(); //FUNKTIONIERT! NICHT LOESCHEN!!!
+		_nb_elevators_res.value = 0;
+		document.getElementById('radio_buttons').reset();
+		//var radioValueglobal = 0;
+		
+		// var x = document.getElementById('nb_elevators_com').value;
+		// x = 0;
+		//window._com_shaft = 0; ///es ZEIGT ES AN. also muss ich an solchen Variablen arbeiten, NICHT AN DEREN IDS!!!
+
 		
 
-
-		function reset_all(){
+		//window.inst_costs1 = 0;
+		//document.getElementById('com_shaft').value = 0;
+		//document.getElementById('total_costs').reset();
+		
+		//document.getElementById('total_costs').innerHTML = 0;
 
 		}
 
 		function total(){
 			
-			_costs= (window.radioValueglobal * window.nb_columns_res_global);
-			console.log('window.radioValueglobal', window.radioValueglobal);
-			console.log('window.nb_columns_res_global', window.nb_columns_res_global);
+			_costs= parseInt(window.radioValueglobal * window.nb_columns_res_global);
+			
 
 			if(window.radioValueglobal == '7565'){
 				inst_costs =  (_costs*0.1);
@@ -840,11 +884,13 @@
 			else if(window.radioValueglobal == '15400'){
 				inst_costs = (_costs*0.16);
 			}
-			total_costs = parseInt(inst_costs) + parseInt(_costs);
+			total_costs = parseFloat(inst_costs) + parseFloat(_costs);
 
-			document.getElementById('inst_costs').innerHTML = inst_costs;
-					
-			document.getElementById('total_costs').innerHTML = total_costs;
+			inst_costs1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(inst_costs);
+			document.getElementById('inst_costs').innerHTML = inst_costs1;
+
+			total_costs1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(total_costs);
+			document.getElementById('total_costs').innerHTML = total_costs1;
 
 		}
 		
