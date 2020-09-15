@@ -754,57 +754,58 @@
 			function corp(){
 
 			_corp_flo = document.getElementById('corp_flo').value;
-			console.log('_corp_flo', _corp_flo);
-
+			
 			_corp_under = document.getElementById('corp_under').value;
-			console.log('_corp_under', _corp_under);
+			
 			corp_sum = parseInt(_corp_flo) + parseInt(_corp_under);
-			console.log('corp_sum', corp_sum);
-
+			
 			_corp_max_person = document.getElementById('corp_max_person').value;
 			
-
 			corp_person_total = parseInt(_corp_max_person) * parseInt(corp_sum);
-			console.log('corp_person_total', corp_person_total);
-
+			
 			_nb_elevators_corp = Math.ceil(corp_person_total/1000);
-			console.log('_nb_elevators_corp', _nb_elevators_corp);
-
+			
 			_nb_columns_corp = Math.ceil(corp_sum /20);
-			console.log('_nb_columns_corp', _nb_columns_corp);
-
+			
 			nb_avg_corp = Math.ceil(parseInt(_nb_elevators_corp)/parseInt(_nb_columns_corp));
-			console.log('nb_avg_corp', nb_avg_corp);
-
+			
 			_nb_elevators_corp_final = Math.ceil(parseInt(nb_avg_corp) * parseInt(_nb_columns_corp));
-			console.log('_nb_elevators_corp_final', _nb_elevators_corp_final);
+			
 			document.getElementById('nb_elevators_corp').innerHTML = _nb_elevators_corp_final ;
 			document.getElementById('nb_columns_corp').innerHTML = _nb_columns_corp;
 			
 			nb_columns_res_global = _nb_elevators_corp_final;
 
-			
 			}
 
 			function hyb(){
 
 			_hyb_flo = document.getElementById('hyb_flo').value;
+
 			_hyb_under = document.getElementById('hyb_under').value;
 
+			hyb_sum = parseInt(_hyb_flo) + parseInt(_hyb_under);
+
 			_hyb_max_person = document.getElementById('hyb_max_person').value;
-			hyb_person_total = _hyb_max_person * (_hyb_flo + _hyb_under);
 
-			_nb_elevators_hyb = hyb_person_total/1000;
-			_nb_columns_hyb = (_hyb_flo + _hyb_under)/20;
+			hyb_person_total = parseInt(_hyb_max_person) * parseInt(hyb_sum);
 
-			nb_avg_hyb = _nb_elevators_hyb/_nb_columns_hyb;
-			_nb_elevators_hyb_final = Math.ceil(nb_avg_hyb * _nb_columns_hyb);
+			_nb_elevators_hyb = Math.ceil(hyb_person_total/1000);
+
+			_nb_columns_hyb = Math.ceil(hyb_sum /20);
+
+			nb_avg_hyb = Math.ceil(parseInt(_nb_elevators_hyb)/parseInt(_nb_columns_hyb));
+
+			_nb_elevators_hyb_final = Math.ceil(parseInt(nb_avg_hyb) * parseInt(_nb_columns_hyb));
 
 			document.getElementById('nb_elevators_hyb').innerHTML = _nb_elevators_hyb_final ;
 			document.getElementById('nb_columns_hyb').innerHTML = _nb_columns_hyb;
 
-			nb_columns_res_global = Math.ceil(_nb_elevators_hyb_final );
+			nb_columns_res_global = _nb_elevators_hyb_final;
+
 			}
+
+			
 
 		function commercial(){
 		
