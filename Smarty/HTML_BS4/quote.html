@@ -243,98 +243,80 @@
 								</fieldset>
 							</form>
 							<form id='form_all'>
-								<div id= 'res_questions'>
-									<div  class='question row'>
-										
-											
-											<div class='col-lg'>
-												<label for= 'res_nb' >1. How many apartments/units will there be?</label>
-											</div>
-											
-											<div class='col-lg'>
-												<label for= 'res_flo' >2. How many floors?</label>
-											</div>
-
-											<div class='col-lg'>
-												<label for= 'res_under'>3. How many underground floors?</label>
-											</div>
-											 
-								</div>
-
-								<div class='row'>
-									<input class='col form-control'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' >
-									<input class='col form-control' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential(), total()'>
-									<input class='col form-control' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential(), total()'>
+									<div id= 'res_questions'>
 									
-								</div>
+											<div class='row' style="display: block;">
+												<label for= 'res_nb' >1. How many apartments/units will there be?</label>
+												<input class='col-sm-6 form-control'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' >
+											</div>
+											
+											<div class='row' style="display: block;">
+												<label for= 'res_flo' >2. How many floors?</label>
+												<input class='col-sm-6 form-control' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential(), total()'>
+											</div>
 
-																
-								<!-- <div class = 'col' >
-									<label>Number of elevators:</label>
-									<span id='nb_elevators_res' min='0'>
-									</span>
-								</div> -->
-
-								<div class = 'col asc_col' >
-									<label>Number of elevators:</label>
-									<span>
-										<input readonly id='nb_elevators_res'>
-									</span>
-								</div>
-								
-								<div class = 'col asc_col' >
-									<label>Number of columns:</label>
-									<span>
-										<input readonly id='nb_columns_res'>
-									</span>
-								</div>
-								
-							</div>
-
+											<div class='row' style="display: block;">
+												<label for= 'res_under'>3. How many underground floors?</label>
+												<input class='col-sm-6 form-control' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential(), total()'>
+											</div>
+										
+									
+										<div class='form-group'>
+											<div class = 'col asc_col' >
+												<label>Number of elevators:</label>
+												<span>
+													<input readonly id='nb_elevators_res'>
+												</span>
+											</div>
+										
+											<div class = 'col asc_col' >
+												<label>Number of columns:</label>
+												<span>
+													<input readonly id='nb_columns_res'>
+												</span>
+											</div>
+										
+										</div>
+									</div>
 								
 							
-							<div id='com_questions' class='question'>
-										<div class='row'>
-											<div class='col'>
+								<div id='com_questions' class='question'>
+										<div class=''>
+											<div class='row form-group' style="display: block;">
 												<label for= 'com_nb'>1. How many distinct businesses will there be?</label>
-											
+												<input class ='row form-control ' type= 'number' id='com_nb' value = '0' min='0' oninput='commercial(), total()'>
 											</div>
 
-											<div class='col'>
-											<label for= 'com_flo'>2. How many floors?</label>
-											
+											<div class='row' style="display: block;">
+												<label for= 'com_flo'>2. How many floors?</label>
+												<input class =' row form-control' type= 'number' id='com_flo' value='0' min='0' oninput='commercial(), total()'>
 											</div>
 
-											<div class='col'>
-											<label for= 'com_under'>3. How many underground floors?</label>
-											
+											<div class='row' style="display: block;">
+												<label for= 'com_under'>3. How many underground floors?</label>
+												<input class ='row form-control' type= 'number' id= 'com_under' value='0' min='0' oninput='commercial(), total()'>
 											</div>
 										
-											<div class='col'>
-											<label for= 'com_parking'>4. How many parking places?</label>
-											
+											<div class='row' style="display: block;">
+												<label for= 'com_parking'>4. How many parking places?</label>
+												<input class ='row form-control' type= 'number' id= 'com_parking' value='0' min='0' oninput='commercial(), total()'>
 											</div>
 									
-											<div class='col'>
-											<label for= 'com_asc'>5. How many elevators?</label>
-											
+											<div class='row' style="display: block;">
+												<label for= 'com_asc'>5. How many elevators?</label>
+												<input class ='row form-control' type= 'number' id='com_shaft' value= '0' min='0' oninput='commercial(), total()'>
 											</div>
-											<div class='row '>
-												<input class ='form-control' type= 'number' id='com_nb' value = '0' min='0' oninput='commercial(), total()'>
-												<input class ='form-control' type= 'number' id='com_flo' value='0' min='0' oninput='commercial(), total()'>
-												<input class ='form-control' type= 'number' id= 'com_under' value='0' min='0' oninput='commercial(), total()'>
-												<input class ='form-control' type= 'number' id= 'com_parking' value='0' min='0' oninput='commercial(), total()'>
-												<input class ='form-control' type= 'number' id='com_shaft' value= '0' min='0' oninput='commercial(), total()'>
 
-											</div>
+										</div>
 											
+										<div class='form-group'>
 											<div class = 'col asc_col' >
 												<label>Number of elevators:</label>
 												<span>
 													<input readonly id='nb_elevators_com'>
 												</span>
 											</div>
-											
+										
 											<div class = 'col asc_col' >
 												<label>Number of columns:</label>
 												<span>
@@ -342,11 +324,11 @@
 												</span>
 											</div>
 										</div>
-									</div>
+								</div>
 
-									<div class='question' id= 'corp_questions'>
-										<div class='row'>
-										<div class='col'>
+								<div class='question' id= 'corp_questions'>
+									<!-- <div class='row'> -->
+										<div class='form-group col'>
 											<label for='corp_nb'>How many renting businesses will there be?</label>
 											<input class ='form-control' display: inline-block type='number' id= 'corp_nb' value = '0' min='0' oninput='corp(), total()'>
 										</div>
@@ -366,8 +348,8 @@
 											<label for='corp_max_person'>Maximal floor occupancy?</label>
 											<input class ='form-control' display: inline-block type='number' id='corp_max_person' value='0' min='0' oninput='corp(), total()'>
 										</div>
-									</div class='row'>
-									<div class='row'>
+									<!-- </div class='row'> -->
+									<div class='form-group'>
 										<div class = 'col asc_col' >
 											<label>Number of elevators:</label>
 											<span>
@@ -382,10 +364,10 @@
 											</span>
 										</div>
 									</div>
-									</div>
+								</div>
 
-									<div class='question' id= 'hyb_questions'>
-										<div class='row'>
+								<div class='question' id= 'hyb_questions'>
+									<div class='form-group'>
 										<div class='col'>
 											<label for='hyb_nb'>How many distinct businesses will there be?</label>
 											<input class ='form-control' type='number' id= 'hyb_nb' value = '0'>
@@ -410,13 +392,13 @@
 											<label for='hyb_max_hour'>Maximal opening hours?</label>
 											<input class ='form-control' type='number' id='hyb_max_hour' value='0' min='0' oninput= 'hyb(), total()'>
 										</div>
-									   </div>
-									   <div class='row'>
+									</div>
+									<div class='form-group'>
 										
 										<div class = 'col asc_col' >
 											<label>Number of elevators:</label>
 											<span>
-												<input readonly id='nb_elevators_hyb'>
+											<input readonly id='nb_elevators_hyb'>
 											</span>
 										</div>
 										
@@ -437,6 +419,8 @@
 									</div>
 								</div>-->
 							</form>
+
+						<div class='container'>
 							<h3>From reliable Affordability all the way up to great Luxury </h3>
 
 							<form id='radio_buttons'>
@@ -451,28 +435,16 @@
 
 									<input type="radio" id="excelium" name="gender" value="15400" onchange ='total()'>
 									<label for="excelium">Excelium</label>
-							</div>
+								</div>
 
-							<div class ='results'>
-								<div class='col-lg'>
-									<label for= 'res_nb'><br>Unit price:</label>
-									<div id= 'reponse'>
+								<div class ='results'>
+									<div class='col-lg'>
+										<label for= 'res_nb'><br>Unit price:</label>
+										<div id= 'reponse'>
 									</div>
 								</div>
 
-								<!-- <div class = 'col-lg' >
-									<label>Unit price:</label>
-									<span>
-										<input readonly id='reponse'>
-									</span>
-								</div> -->
-
-								<!-- <div class='col-lg'>
-									<label for= 'inst_costs'><br>Installation costs:</label>
-									<div id= 'inst_costs'> </div>
-								</div> -->
-
-
+								
 								<div class = 'col' >
 									<label for="inst_costs">Installation costs:</label>
 									<span>
@@ -498,12 +470,7 @@
 									</span>
 								</div>
 							</div>
-							<!-- <div class= 'row'>
-								
-									<p>The Result is : <br>
-									<span id='result'></span>
-								
-							</div> -->
+							
 
 						
 								
