@@ -221,15 +221,16 @@
 					<h3>Let's Budget your Project! </h3>
 
 					<div class="row">
-							<form id='menu'>
-								
+								<form id='menu'>
+								<!--<form action="php/contact.php" method="post" enctype="multipart/form-data">-->
 								<fieldset>
-									
+									<!--<input type="hidden" name="action" value="contact_send" />-->
+
 									<div class="row">
 										<div class="col-md-4">
 											<label for="contact_department">Building type</label>
 											
-											<select id='building' class="form-control pointer" style='width: 200px'  onchange='residential()'>
+											<select id='building' class="form-control pointer" style='width: 200px'  onchange='reset_res(), residential()'>
 												<option value="">--- Select ---</option>
 												<option value="Residential">Residential</option>
 												<option value="Commercial">Commercial</option>
@@ -239,17 +240,17 @@
 											</select>
 										</div>	
 									</div>
-								</fieldset>
-							</form>
-							<form id='form_all'>
-								<div id= 'res_questions'>
-									<div  class='question row'>
+								</form>
+								
+							<div id= 'res_questions'>
+								<div  class='question row'>
 										
 											
 											<div class='col-lg'>
 												<label for= 'res_nb' >1. How many apartments/units will there be?</label>
 											</div>
 											
+							
 											<div class='col-lg'>
 												<label for= 'res_flo' >2. How many floors?</label>
 											</div>
@@ -260,42 +261,46 @@
 											 
 								</div>
 
-								<div class='row'>
+									<div class='row'>
 									<input class='col form-control'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' >
 									<input class='col form-control' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential(), total()'>
 									<input class='col form-control' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential(), total()'>
 									
-								</div>
+									</div>
 
-																
-								<!-- <div class = 'col' >
-									<label>Number of elevators:</label>
-									<span id='nb_elevators_res' min='0'>
-									</span>
-								</div> -->
-
-								<div class = 'col' >
-									<label>Number of elevators:</label>
-									<span>
-										<input readonly id='work_around'>
-									</span>
-								</div>
+								<!-- <div class='row'>
+									<div class='col'>
+										<input type='button' onClick='residential()' Value = 'Calculate elevators and columns'>	
+									</div> -->
+								<!-- </div> -->
 								
-								<div class = 'col' >
-									<label>Number of columns:</label>
-									<span>
-										<input readonly id='nb_columns_res'>
-									</span>
-								</div>
+									<div class = 'col effacer' >
+										<label>Number of elevators:</label>
+										<span id='nb_elevators_res' ><input type='number' class ='form-control' id='nb_elevators_res'   readonly ></span>
+										
+									</div>
+									
+								
+									<div class = 'col effacer' >
+										<label>Number of columns:</label>
+										<span id='nb_columns_res'></span>
+									</div>
 								
 							</div>
 
-								
-							
-							<div id='com_questions' class='question'>
+								<!-- <div>
+									1st Number : <input type="text" id="firstNumber" /><br>
+									2nd Number: <input type="text" id="secondNumber" /><br>
+									<input type="button" onClick="multiplyBy()" Value="Multiply" />
+									
+								</div> -->
+
+							<form id= 'form_all'>
+
+									<div id='com_questions' class='question'>
 										<div class='row'>
 											<div class='col'>
-												<label for= 'com_nb'>1. How many distinct businesses will there be?</label>
+											<label for= 'com_nb'>1. How many distinct businesses will there be?</label>
 											
 											</div>
 
@@ -329,13 +334,12 @@
 											<div class = 'col' >
 												<label>Number of elevators:</label>
 												<!-- <span id='nb_elevators_com'></span> -->
-												<span id='nb_elevators_com' readonly>
-												</span>
+												<input class ='form-control' type='number' id='nb_elevators_com' readonly>
 											</div>
 										
 											<div class = 'col' >
 												<label>Number of columns:</label>
-												<span id='nb_columns_com' readonly></span>
+												<span id='nb_columns_com'></span>
 											</div>
 										</div>
 									</div>
@@ -426,31 +430,30 @@
 								</div>-->
 							</form>
 							<h3>From reliable Affordability all the way up to great Luxury </h3>
+							<button style='border: 3px solid;' type='button' onclick='reset_all()'>RESET</button>
 
-							<form id='radio_buttons'>
-							<div>
+								<form id='radio_buttons' action="/action_page.php">
 								<p>Please select a product line.</p>
 								<div class='row'>
-									<input type="radio" id="standard" name="gender" value="7565" onchange ='total()'>
-									<label for="standard">Standard</label>
+								<input type="radio" id="standard" name="gender" value="7565" onchange ='total()'>
+								<label for="standard">Standard</label>
 
-									<input type="radio" id="premium" name="gender" value="12345" onchange ='total()'>
-									<label for="premium">Premium</label>
+								<input type="radio" id="premium" name="gender" value="12345" onchange ='total()'>
+								<label for="premium">Premium</label>
 
-									<input type="radio" id="excelium" name="gender" value="15400" onchange ='total()'>
-									<label for="excelium">Excelium</label>
+								<input type="radio" id="excelium" name="gender" value="15400" onchange ='total()'>
+								<label for="excelium">Excelium</label>
 							</div>
 
-							<div class ='results'>
-								<div class='col-lg'>
+							<div class='col-lg'>
 									<label for= 'res_nb'><br>Unit price:</label>
 									<div id= 'reponse'> </div>
-								</div>
-								<div class='col-lg'>
-									<label for= 'inst_costs'><br>Installation costs:</label>
-									<div id= 'inst_costs'> </div>
-								</div>
-								<div class='col-lg'>
+							</div>
+							<div class='col-lg'>
+								<label for= 'inst_costs'><br>Installation costs:</label>
+								<div id= 'inst_costs'> </div>
+							</div>
+							<div class='col-lg'>
 								<label for= 'total_costs'><br>Total costs:</label>
 								<div id= 'total_costs'> </div>
 							</div>
@@ -461,23 +464,26 @@
 								
 							</div> -->
 
-						
-								
+						</fieldset>
+								</form>
 							</form>
 						</div>
 					
+
 							
-					
+
+
+
+						
 						<!-- /FORM -->
 
 
 					</div>
 
-				
+				</div>
 			</section>
-			<div class ='container'>
-				<button style="border: 3px solid;" type="button" onclick="reset_all()">RESET ENTRIES AND SELECTIONS</button>
-			</div>
+			
+			
 
 			<!-- /QUOTE -->
 			
@@ -614,18 +620,12 @@
 		$('#com_questions').hide();
 		$('#corp_questions').hide();
 		$('#hyb_questions').hide();
-		$('#radio_buttons').hide();
-		$('.results').hide();
 
 /* $(selector).show(speed,easing,callback) */
 
 		$('#building').on('change', function(){
-			$('#radio_buttons').show();
-			$('.results').show();
-			reset_all();
 			var chosen = $('#building option:selected').val();
 			
-			console.log('chosen', chosen)
 			if (chosen == 'Residential'){
 				$('#res_questions').show();
 			
@@ -637,10 +637,10 @@
 				$('#res_nb').val('0');
 				$('#res_flo').val('0');
 				$('#res_under').val('0');
-				//$('#nb_columns_res').val('0'); //marche pas
-				//$("#building")[0].reset(); //marche pas
+				$('#nb_columns_res').val('0'); //marche pas
+				$("#building")[0].reset(); //marche pas
 				$('#nb_elevators_res').empty();
-				//$('nb_columns_res').empty();
+				$('nb_columns_res').empty();
 				$('.effacer').empty();
 				
 				
@@ -748,7 +748,7 @@
 
 
 		function residential(){
-			var res_avg = 0;
+			
 			_res_nb = document.getElementById('res_nb').value;
 			_res_flo = document.getElementById('res_flo').value;
 			_res_under = document.getElementById('res_under').value;
@@ -756,17 +756,28 @@
 			
 			res_avg = parseInt(_res_nb)/ parseInt(_res_flo);
 			_nb_columns_res = Math.ceil(_res_flo/20); //sollte ich DIESEN math.ceil entfernen???
-			document.getElementById('nb_columns_res').value = Math.ceil(_nb_columns_res);
-			
+			document.getElementById('nb_columns_res').innerHTML = Math.ceil(_nb_columns_res);
+
 
 			_nb_elevators_res = parseInt(res_avg) - parseInt(_nb_columns_res);
-			//document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
-			document.getElementById('work_around').value= Math.ceil(_nb_elevators_res); //****!!!!
-			
+			document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
 
 			nb_columns_res_global = Math.ceil(_nb_elevators_res); //copier pour comm!
 
-			}
+			// console.log('radioValueglobal!!!', window.radioValueglobal);
+
+			// _inst_costs_res = (window.radioValueglobal * 0.1) * _nb_elevators_res;
+
+			// console.log('radioValueglobal!!!', window.radioValueglobal);
+
+			// document.getElementById('inst_costs').innerHTML = _inst_costs_res;
+
+			// console.log('_inst_costs_res!!!', _inst_costs_res);
+
+			// _total_costs_res = _nb_columns_res*radioValueglobal + (_nb_columns_res*radioValueglobal)* 0.1;
+			// document.getElementById('total_costs').innerHTML = _total_costs_res;
+			// console.log('_total_costs_res', _total_costs_res )
+		}
 
 			function corp(){
 
