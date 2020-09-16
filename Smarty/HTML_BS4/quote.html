@@ -210,15 +210,16 @@
 
 
 			<!-- QUOTE -->
-			<section id="questions">
-				<div class="container">
+			<section id="questions" style="border-color: #dc3545">
+
+				<div class="container" style="border-color: #dc3545">
 
 					<header class="text-center mb-60">
 						<h2>Get a Quote</h2>
 						<p class="lead font-lato">Our Team is available 7 days a week to answer your questions!</p>
 						<hr />
 					</header>
-					<h3>Let's Budget your Project! </h3>
+					<center><h3>Let's Budget your Project! </h3></center>
 
 					<div class="row">
 							<form id='menu'>
@@ -274,14 +275,14 @@
 									</span>
 								</div> -->
 
-								<div class = 'col' >
+								<div class = 'col asc_col' >
 									<label>Number of elevators:</label>
 									<span>
-										<input readonly id='work_around'>
+										<input readonly id='nb_elevators_res'>
 									</span>
 								</div>
 								
-								<div class = 'col' >
+								<div class = 'col asc_col' >
 									<label>Number of columns:</label>
 									<span>
 										<input readonly id='nb_columns_res'>
@@ -326,16 +327,19 @@
 												<input class ='form-control' type= 'number' id='com_shaft' value= '0' min='0' oninput='commercial(), total()'>
 
 											</div>
-											<div class = 'col' >
+											
+											<div class = 'col asc_col' >
 												<label>Number of elevators:</label>
-												<!-- <span id='nb_elevators_com'></span> -->
-												<span id='nb_elevators_com' readonly>
+												<span>
+													<input readonly id='nb_elevators_com'>
 												</span>
 											</div>
-										
-											<div class = 'col' >
+											
+											<div class = 'col asc_col' >
 												<label>Number of columns:</label>
-												<span id='nb_columns_com' readonly></span>
+												<span>
+													<input readonly id='nb_columns_com'>
+												</span>
 											</div>
 										</div>
 									</div>
@@ -364,14 +368,18 @@
 										</div>
 									</div class='row'>
 									<div class='row'>
-										<div class = 'col' >
+										<div class = 'col asc_col' >
 											<label>Number of elevators:</label>
-											<span id='nb_elevators_corp'></span>
+											<span>
+												<input readonly id='nb_elevators_corp'>
+											</span>
 										</div>
-									
-										<div class = 'col' >
+										
+										<div class = 'col asc_col' >
 											<label>Number of columns:</label>
-											<span id='nb_columns_corp'></span>
+											<span>
+												<input readonly id='nb_columns_corp'>
+											</span>
 										</div>
 									</div>
 									</div>
@@ -404,15 +412,19 @@
 										</div>
 									   </div>
 									   <div class='row'>
-										<div class = 'col' >
+										
+										<div class = 'col asc_col' >
 											<label>Number of elevators:</label>
-											<span id='nb_elevators_hyb'></span>
-											
+											<span>
+												<input readonly id='nb_elevators_hyb'>
+											</span>
 										</div>
-									
-										<div class = 'col' >
+										
+										<div class = 'col asc_col' >
 											<label>Number of columns:</label>
-											<span id='nb_columns_hyb'></span>
+											<span>
+												<input readonly id='nb_columns_hyb'>
+											</span>
 										</div>
 									</div>
 									</div>
@@ -444,15 +456,47 @@
 							<div class ='results'>
 								<div class='col-lg'>
 									<label for= 'res_nb'><br>Unit price:</label>
-									<div id= 'reponse'> </div>
+									<div id= 'reponse'>
+									</div>
 								</div>
-								<div class='col-lg'>
+
+								<!-- <div class = 'col-lg' >
+									<label>Unit price:</label>
+									<span>
+										<input readonly id='reponse'>
+									</span>
+								</div> -->
+
+								<!-- <div class='col-lg'>
 									<label for= 'inst_costs'><br>Installation costs:</label>
 									<div id= 'inst_costs'> </div>
+								</div> -->
+
+
+								<div class = 'col' >
+									<label for="inst_costs">Installation costs:</label>
+									<span>
+										$<input readonly id='inst_costs'>
+									</span>
 								</div>
-								<div class='col-lg'>
+
+								<!-- <div class = 'col-lg' >
+									<label>Installation costs:</label>
+									<span>
+										<input readonly id='inst_costs'>
+									</span>
+								</div> -->
+
+								<!-- <div class='col-lg'>
 								<label for= 'total_costs'><br>Total costs:</label>
-								<div id= 'total_costs'> </div>
+								<div id= 'total_costs'> </div> -->
+
+								<div class = 'col' >
+									<label for="total_costs">Total costs:</label>
+									<span>
+										$<input readonly id='total_costs'>
+									</span>
+								</div>
 							</div>
 							<!-- <div class= 'row'>
 								
@@ -622,11 +666,12 @@
 		$('#building').on('change', function(){
 			$('#radio_buttons').show();
 			$('.results').show();
-			reset_all();
+			
 			var chosen = $('#building option:selected').val();
 			
 			console.log('chosen', chosen)
 			if (chosen == 'Residential'){
+				
 				$('#res_questions').show();
 			
 			
@@ -761,7 +806,7 @@
 
 			_nb_elevators_res = parseInt(res_avg) - parseInt(_nb_columns_res);
 			//document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
-			document.getElementById('work_around').value= Math.ceil(_nb_elevators_res); //****!!!!
+			document.getElementById('nb_elevators_res').value= Math.ceil(_nb_elevators_res); //****!!!!
 			
 
 			nb_columns_res_global = Math.ceil(_nb_elevators_res); //copier pour comm!
@@ -788,8 +833,8 @@
 			
 			_nb_elevators_corp_final = Math.ceil(parseInt(nb_avg_corp) * parseInt(_nb_columns_corp));
 			
-			document.getElementById('nb_elevators_corp').innerHTML = _nb_elevators_corp_final ;
-			document.getElementById('nb_columns_corp').innerHTML = _nb_columns_corp;
+			document.getElementById('nb_elevators_corp').value = _nb_elevators_corp_final ;
+			document.getElementById('nb_columns_corp').value = _nb_columns_corp;
 			
 			nb_columns_res_global = _nb_elevators_corp_final;
 
@@ -815,8 +860,8 @@
 
 			_nb_elevators_hyb_final = Math.ceil(parseInt(nb_avg_hyb) * parseInt(_nb_columns_hyb));
 
-			document.getElementById('nb_elevators_hyb').innerHTML = _nb_elevators_hyb_final ;
-			document.getElementById('nb_columns_hyb').innerHTML = _nb_columns_hyb;
+			document.getElementById('nb_elevators_hyb').value = _nb_elevators_hyb_final ;
+			document.getElementById('nb_columns_hyb').value = _nb_columns_hyb;
 
 			nb_columns_res_global = _nb_elevators_hyb_final;
 
@@ -829,8 +874,8 @@
 		_com_shaft = document.getElementById('com_shaft').value;
 		//document.getElementById('nb_elevators_com').innerHTML = 0;
 		
-		document.getElementById('nb_columns_com').innerHTML = Math.ceil(_com_shaft);
-		document.getElementById('nb_elevators_com').innerHTML = Math.ceil(_com_shaft);
+		document.getElementById('nb_columns_com').value = Math.ceil(_com_shaft);
+		document.getElementById('nb_elevators_com').value = Math.ceil(_com_shaft);
 
 				
 		window.nb_columns_res_global = Math.ceil(_com_shaft);
@@ -847,6 +892,11 @@
 		document.getElementById('form_all').reset(); //FUNKTIONIERT! NICHT LOESCHEN!!!
 		_nb_elevators_res.value = 0;
 		document.getElementById('radio_buttons').reset();
+		document.getElementsByClassName('results').reset();
+		//document.getElementById('inst_costs').reset();
+		//WARUM JEHT ET NET?!?!? Richtiger Ort. ...aber die Fragen werden nicht anjezeigt. Weil...Wo wird reset_all gefunden?
+		//naechster Versuch: wo endet form_all? wie heisst der naechste...
+		
 		//var radioValueglobal = 0;
 		
 		// var x = document.getElementById('nb_elevators_com').value;
@@ -855,11 +905,7 @@
 
 		
 
-		//window.inst_costs1 = 0;
-		//document.getElementById('com_shaft').value = 0;
-		//document.getElementById('total_costs').reset();
 		
-		//document.getElementById('total_costs').innerHTML = 0;
 
 		}
 
@@ -869,40 +915,30 @@
 			
 
 			if(window.radioValueglobal == '7565'){
-				inst_costs =  (_costs*0.1);
+				inst_costs =  parseFloat(_costs*0.1);
 			}
 			else if(window.radioValueglobal == '12345'){
-				inst_costs = (_costs*0.13);
+				inst_costs = parseFloat(_costs*0.13);
 			}
 			else if(window.radioValueglobal == '15400'){
-				inst_costs = (_costs*0.16);
+				inst_costs = parseFloat(_costs*0.16);
 			}
 			total_costs = parseFloat(inst_costs) + parseFloat(_costs);
 
 			inst_costs1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(inst_costs);
 			document.getElementById('inst_costs').innerHTML = inst_costs1;
 
+			document.getElementById('inst_costs').value = inst_costs;
+
+
 			total_costs1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(total_costs);
 			document.getElementById('total_costs').innerHTML = total_costs1;
 
-		}
-		
-			//_inst_costs_res = unit_price_standard
+			document.getElementById('total_costs').value = parseFloat(total_costs);//parseInt(total_costs1);
 			
 
-			// var _building = $('#building option:selected').val();
-			// if (_building=='Residential'){
-			// 	console.log('blabla', _building)
-			// 	var _res_nb = document.getElementById('res_nb');
-			// 	//var _res_nb = parseInt(document.getElementById('res_nb').value,10);
-			// 	console.log('nimportequoi', _res_nb) 
-			// 	$('#four').innerHTML(_res_nb)
-			//}
-		//}
-
+		}
 		
-
-
 
 		// $("input[type='number']").change(function(){
         //     var test = $("input[name='res_nb']:checked").val();
@@ -912,74 +948,13 @@
 		// 	}
 		// });
 
-            
-
-		//les noms en 1er:  id='res_nb'c le input de la question. ou la montrer?nb_elevators_res
-	// 	$("input[type='number']").change(function(){	
-	// 	var res_nb = $("input[id='#res_nb']:checked").val();
-	// 	if(res_nb) {
-	// 		alert("res_nb=" + res_nb);
-	// 	}
-	// });
 		
 		
 		</script>
 
 	
 <script>
-/*
 
-		function _results() {
-			var _res_nb 			= $('#res_nb').val()				||0				//nb of units
-				_res_flo			= $('#res_flo').val()				||0				//nb of floors
-				_res_under			= $('#res_under').val()				||0				//nb of underground floors
-				_com_nb				= $('#com_nb').val()				||0				//
-				_com_flo			= $('#com_flo').val()				||0				//
-				_com_under			= $('#com_under').val()				||0				//
-				/*_			= $('#').val()				||0				//
-				_			= $('#').val()				||0				//
-				_			= $('#').val()				||0				//
-				_com_asc			= $('#com_asc').val()				||0				//given by user***
-			
-		}
-*/
-
-/*
-		function _mcalc() {
-			var _mcalc_price 		= jQuery("#mcalc-price").val() 		|| 0,			// price
-			 	_mcalc_term 		= jQuery("#mcalc-term").val() 		|| 10,			// term
-			 	_mcalc_dpayment 	= jQuery("#mcalc-dpayment").val() 	|| 0,			// % down payment
-			 	_mcalc_rate 		= jQuery("#mcalc-rate").val() 		|| 0,			// rate
-			 	_mcalc_charges		= jQuery("#mcalc-charges").html()	|| 0,			// monthyl charges
-			 	_mcalc_charges		= Number(_mcalc_charges.replace(',',''));
-*/
-/*
-		//CALCULATIONS
-		res_avg = res_nb/res_flo
-		res_asc_prel = res_nb/6
-		res_asc_fin = 	
-		1 asc pour 6 res
-		donc res_asc +1 quand...
-
-		si res_avg/6 = res_asc
-
-		2 asc si > 20 floors
-		asc !=columns...
-
-		//Corp AND hyb
-		var corp_person_total= $('#corp_max_person' * $('#corp_flo' + '#corp_under')
-		var hyb_person_total = hyb_max_person * (hyb_flo + hyb_under)
-
-		corp_asc = corp_person_total/1000
-		hyb_asc = hyb_person_total/1000
-
-		//RESULTS: NUMBER OF ELEVATOR COLUMNS PER CATEGORY
-		//var res_col = 
-
-		var com_col = $('#com_flo' + '#com_under')/20
-		var corp_col = $('#corp_flo' + '#corp_under')/20
-		var hyb_col = $('#hyb_flo' + '#hyb_under')/20
-*/
 
 /*
 		COSTS ***ACHTUNG! WURDE NUR KOPIERT!
