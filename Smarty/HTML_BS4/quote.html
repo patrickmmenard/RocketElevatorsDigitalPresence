@@ -30,27 +30,7 @@
 		<link href="assets/css/color_scheme/yellow.css" rel="stylesheet" type="text/css" id="color_scheme" />
 	</head>
 
-	<!--
-		AVAILABLE BODY CLASSES:
-		
-		smoothscroll 			= create a browser smooth scroll
-		enable-animation		= enable WOW animations
-
-		bg-grey					= grey background
-		grain-grey				= grey grain background
-		grain-blue				= blue grain background
-		grain-green				= green grain background
-		grain-blue				= blue grain background
-		grain-orange			= orange grain background
-		grain-yellow			= yellow grain background
-		
-		boxed 					= boxed layout
-		pattern1 ... patern11	= pattern background
-		menu-vertical-hide		= hidden, open on click
-		
-		BACKGROUND IMAGE [together with .boxed class]
-		data-background="assets/images/_smarty/boxed_background/1.jpg"
-	-->
+	
 	<body class="smoothscroll enable-animation">
 
 		<!-- SLIDE TOP -->
@@ -64,18 +44,7 @@
 						<h6><i class="icon-heart"></i> WHY ROCKET ELEVATORS?</h6>
 						<p>Rocket Elevators is the largest subsidiary of Rocket Corp. and specialises in the delivery of social and economic infrastructure projects, including high-rise developments, airport terminals, luxury villas and iconic landmarks. </p>
 					</div>
-					<!--
-					<div class="col-md-4">
-						<h6><i class="fa-facheck"></i> RECENTLY VISITED</h6>
-						<ul class="list-unstyled">
-							<li><a href="#"><i class="fa fa-angle-right"></i> Consectetur adipiscing elit amet</a></li>
-							<li><a href="#"><i class="fa fa-angle-right"></i> This is a very long text, very very very very very very very very very very very very </a></li>
-							<li><a href="#"><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet</a></li>
-							<li><a href="#"><i class="fa fa-angle-right"></i> Dolor sit amet,consectetur adipiscing elit amet</a></li>
-							<li><a href="#"><i class="fa fa-angle-right"></i> Consectetur adipiscing elit amet,consectetur adipiscing elit</a></li>
-						</ul>
-					</div>
-					-->
+					
 					<div class="col-md-4">
 						<h6><i class="icon-envelope"></i> CONTACT INFO</h6>
 						<ul class="list-unstyled">
@@ -447,7 +416,7 @@
 								<div class = 'col' >
 									<label for="reponse1">Unit price:</label>
 									<span>
-										$<input readonly id='reponse1'>
+										$<input readonly id='reponse1' placeholder='0' min='0'>
 									</span>
 								</div>
 
@@ -455,7 +424,7 @@
 								<div class = 'col' >
 									<label for="inst_costs">Installation costs:</label>
 									<span>
-										$<input readonly id='inst_costs'>
+										$<input readonly id='inst_costs' placeholder='0' min='0'>
 									</span>
 								</div>
 
@@ -473,7 +442,7 @@
 								<div class = 'col' >
 									<label for="total_costs">Total costs:</label>
 									<span>
-										$<input readonly id='total_costs'>
+										$<input readonly id='total_costs' placeholder='0' min='0'>
 									</span>
 								</div>
 							</div>
@@ -495,6 +464,9 @@
 			</section>
 			<div class ='container'>
 				<button style="border: 3px solid;" type="button" onclick="reset_all()">RESET ENTRIES AND SELECTIONS</button>
+			
+				<button id='submit' class='btn btn-danger btn-lg' style="border: 3px solid;" type="button" onclick="submit()">SUBMIT</button>
+				<a class="btn btn-danger btn-lg" href="index.html#contact">CONTACT US <i class="fa fa-angle-right"></i></a>
 			</div>
 
 			<!-- /QUOTE -->
@@ -893,15 +865,7 @@
 		_nb_elevators_res.value = 0;
 		document.getElementById('radio_buttons').reset();
 		document.getElementsByClassName('results').reset();
-		//document.getElementById('inst_costs').reset();
-		//WARUM JEHT ET NET?!?!? Richtiger Ort. ...aber die Fragen werden nicht anjezeigt. Weil...Wo wird reset_all gefunden?
-		//naechster Versuch: wo endet form_all? wie heisst der naechste...
 		
-		//var radioValueglobal = 0;
-		
-		// var x = document.getElementById('nb_elevators_com').value;
-		// x = 0;
-		//window._com_shaft = 0; ///es ZEIGT ES AN. also muss ich an solchen Variablen arbeiten, NICHT AN DEREN IDS!!!
 
 		
 
@@ -941,14 +905,17 @@
 
 			document.getElementById('total_costs').value = parseFloat(total_costs);//parseInt(total_costs1);
 			
+		}
 
+		function submit(){
+			window.alert("Under construction: please press function + PrtScn and send us your saved submission in PDF format via email. Use our Contact Us form (link below). We will answer within 24 hours. Thank you.");
 		}
 		
 
-		// $("input[type='number']").change(function(){
+		// $("input[type='button']").change(function(){
         //     var test = $("input[name='res_nb']:checked").val();
 		// 	if(radioValue){
-		// 		alert("Unit price for an elevator of the chosen line: $" + radioValue);
+		// 		alert("Under construction: please press function+ PrtScn and send your saved submission as file attached to your email in our Contact Us form. Thank you. $" + radioValue);
 		// 		$('#reponse').html('$' + radioValue)
 		// 	}
 		// });
