@@ -247,17 +247,17 @@
 									
 											<div class='row' style="display: block;">
 												<label for= 'res_nb' >1. How many apartments/units will there be?</label>
-												<input class='col-sm-6 form-control'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' >
+												<input class='form-control'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' >
 											</div>
 											
 											<div class='row' style="display: block;">
 												<label for= 'res_flo' >2. How many floors?</label>
-												<input class='col-sm-6 form-control' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential(), total()'>
+												<input class=' form-control' type= 'number' id='res_flo' value='0' min='0' oninput= 'residential(), total()'>
 											</div>
 
 											<div class='row' style="display: block;">
 												<label for= 'res_under'>3. How many underground floors?</label>
-												<input class='col-sm-6 form-control' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential(), total()'>
+												<input class=' form-control' type= 'number' id= 'res_under' value='0' min='0' oninput= 'residential(), total()'>
 											</div>
 										
 									
@@ -265,14 +265,14 @@
 											<div class = 'col asc_col' >
 												<label>Number of elevators:</label>
 												<span>
-													<input readonly id='nb_elevators_res'>
+													<input readonly min='0' id='nb_elevators_res'>
 												</span>
 											</div>
 										
 											<div class = 'col asc_col' >
 												<label>Number of columns:</label>
 												<span>
-													<input readonly id='nb_columns_res'>
+													<input readonly min='0' id='nb_columns_res'>
 												</span>
 											</div>
 										
@@ -437,11 +437,18 @@
 									<label for="excelium">Excelium</label>
 								</div>
 
-								<div class ='results'>
+								<!-- <div class ='results'>
 									<div class='col-lg'>
 										<label for= 'res_nb'><br>Unit price:</label>
 										<div id= 'reponse'>
 									</div>
+								</div> -->
+
+								<div class = 'col' >
+									<label for="reponse1">Unit price:</label>
+									<span>
+										$<input readonly id='reponse1'>
+									</span>
 								</div>
 
 								
@@ -742,6 +749,7 @@
 				//alert("Good choice! The Standard unit price is: $" + radioValue);
 				radioValue1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(radioValue)
 				$('#reponse').html(radioValue1)
+				$('#reponse').val(radioValue)
 			}
 			else if (radioValue.id= 'premium'){
 				//alert("Very good choice! The Premium unit price is: $" + radioValue);
@@ -768,10 +776,17 @@
 			
 			res_avg = parseInt(_res_nb)/ parseInt(_res_flo);
 			_nb_columns_res = Math.ceil(_res_flo/20); //sollte ich DIESEN math.ceil entfernen???
-			document.getElementById('nb_columns_res').value = Math.ceil(_nb_columns_res);
+			if(_nb_columns_res <0){
+				_nb_columns_res =0;
+			}
+			
+			document.getElementById('nb_columns_res').value = document.getElementById('nb_columns_res').value = Math.ceil(_nb_columns_res);
 			
 
 			_nb_elevators_res = parseInt(res_avg) - parseInt(_nb_columns_res);
+			if(_nb_elevators_res <0){
+				_nb_elevators_res =0;
+			}
 			//document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
 			document.getElementById('nb_elevators_res').value= Math.ceil(_nb_elevators_res); //****!!!!
 			
@@ -799,6 +814,12 @@
 			nb_avg_corp = Math.ceil(parseInt(_nb_elevators_corp)/parseInt(_nb_columns_corp));
 			
 			_nb_elevators_corp_final = Math.ceil(parseInt(nb_avg_corp) * parseInt(_nb_columns_corp));
+			if(_nb_elevators_corp_final<0){
+				_nb_elevators_corp_final=0;
+			}
+			if(_nb_columns_corp<0){
+				_nb_columns_corp=0;
+			}
 			
 			document.getElementById('nb_elevators_corp').value = _nb_elevators_corp_final ;
 			document.getElementById('nb_columns_corp').value = _nb_columns_corp;
@@ -826,6 +847,15 @@
 			nb_avg_hyb = Math.ceil(parseInt(_nb_elevators_hyb)/parseInt(_nb_columns_hyb));
 
 			_nb_elevators_hyb_final = Math.ceil(parseInt(nb_avg_hyb) * parseInt(_nb_columns_hyb));
+			if(_nb_elevators_hyb_final<0){
+				_nb_elevators_hyb_final=0;
+			}
+
+			if(_nb_columns_hyb<0){
+				_nb_columns_hyb=0;
+			}
+
+
 
 			document.getElementById('nb_elevators_hyb').value = _nb_elevators_hyb_final ;
 			document.getElementById('nb_columns_hyb').value = _nb_columns_hyb;
@@ -840,6 +870,9 @@
 		
 		_com_shaft = document.getElementById('com_shaft').value;
 		//document.getElementById('nb_elevators_com').innerHTML = 0;
+		if(_com_shaft<0){
+			_com_shaft=0;
+		}
 		
 		document.getElementById('nb_columns_com').value = Math.ceil(_com_shaft);
 		document.getElementById('nb_elevators_com').value = Math.ceil(_com_shaft);
@@ -883,13 +916,18 @@
 
 			if(window.radioValueglobal == '7565'){
 				inst_costs =  parseFloat(_costs*0.1);
+				document.getElementById('reponse1').value = window.radioValueglobal;
 			}
 			else if(window.radioValueglobal == '12345'){
 				inst_costs = parseFloat(_costs*0.13);
+				document.getElementById('reponse1').value = window.radioValueglobal;
 			}
+			
 			else if(window.radioValueglobal == '15400'){
 				inst_costs = parseFloat(_costs*0.16);
+				document.getElementById('reponse1').value = window.radioValueglobal;
 			}
+			
 			total_costs = parseFloat(inst_costs) + parseFloat(_costs);
 
 			inst_costs1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(inst_costs);
