@@ -106,7 +106,7 @@
 
 						<!-- Logo -->
 						<a class="logo float-left scrollTo" href="#top">
-							<!--<img src="assets/images/custom/R201.jpg" alt="rocket elevators" style="max-height:100%;"  />-->
+							
 							<img src="assets/images/custom/R2.png" alt="rocket elevators" height='100%'/>
 						</a>
 
@@ -199,7 +199,7 @@
 										<div class="col-md-4">
 											<label for="contact_department">Building type</label>
 											
-											<select id='building' class="form-control pointer" style='width: 200px'  onchange='residential()'>
+											<select id='building' class="form-control pointer" style='width: 200px'  onchange='residential()'>	<!--DROPDOWN MENU BUILDING TYPE-->
 												<option value="">--- Select ---</option>
 												<option value="Residential">Residential</option>
 												<option value="Commercial">Commercial</option>
@@ -213,10 +213,10 @@
 							</form>
 							<form id='form_all'>
 									<div id= 'res_questions'>
-									
+																								<!--RESIDENTIAL QUESTIONS-->		
 											<div class='row' style="display: block;">
 												<label for= 'res_nb' >1. How many apartments/units will there be?</label>
-												<input class='form-control'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' >
+												<input class='form-control'  type= 'number' id='res_nb' value = '0' min='0' oninput= 'residential(), total()' > 
 											</div>
 											
 											<div class='row' style="display: block;">
@@ -249,7 +249,7 @@
 									</div>
 								
 							
-								<div id='com_questions' class='question'>
+								<div id='com_questions' class='question'>						<!--COMMERCIAL QUESTIONS-->
 										<div class=''>
 											<div class='row form-group' style="display: block;">
 												<label for= 'com_nb'>1. How many distinct businesses will there be?</label>
@@ -295,7 +295,7 @@
 										</div>
 								</div>
 
-								<div class='question' id= 'corp_questions'>
+								<div class='question' id= 'corp_questions'>							<!--CORPORATE QUESTIONS-->
 									<!-- <div class='row'> -->
 										<div class='form-group col'>
 											<label for='corp_nb'>How many renting businesses will there be?</label>
@@ -335,7 +335,7 @@
 									</div>
 								</div>
 
-								<div class='question' id= 'hyb_questions'>
+								<div class='question' id= 'hyb_questions'>								<!--HYBRID QUESTIONS-->
 									<div class='form-group'>
 										<div class='col'>
 											<label for='hyb_nb'>How many distinct businesses will there be?</label>
@@ -378,21 +378,17 @@
 											</span>
 										</div>
 									</div>
-									</div>
+								</div>
 									
-									</div>
+							</div>
 
-								<!--<div class="row">
-									<div class="col-md-12">
-										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> SEND MESSAGE</button>
-									</div>
-								</div>-->
+								
 							</form>
 
 						<div class='container'>
 							<h3>From reliable Affordability all the way up to great Luxury </h3>
 
-							<form id='radio_buttons'>
+							<form id='radio_buttons'>															<!--PRODUCT LINE SELECTION, RADIO BUTTONS-->
 							<div>
 								<p>Please select a product line.</p>
 								<div class='row'>
@@ -406,14 +402,8 @@
 									<label for="excelium">Excelium</label>
 								</div>
 
-								<!-- <div class ='results'>
-									<div class='col-lg'>
-										<label for= 'res_nb'><br>Unit price:</label>
-										<div id= 'reponse'>
-									</div>
-								</div> -->
-
-								<div class = 'col' >
+								
+								<div class = 'col' >															<!--DISPLAYS SELECTED UNIT PRICE-->
 									<label for="reponse1">Unit price:</label>
 									<span>
 										$<input readonly id='reponse1' placeholder='0' min='0'>
@@ -421,47 +411,33 @@
 								</div>
 
 								
-								<div class = 'col' >
+								<div class = 'col' >															<!--DISPLAYS INSTALLATION COSTS-->
 									<label for="inst_costs">Installation costs:</label>
 									<span>
 										$<input readonly id='inst_costs' placeholder='0' min='0'>
 									</span>
 								</div>
 
-								<!-- <div class = 'col-lg' >
-									<label>Installation costs:</label>
-									<span>
-										<input readonly id='inst_costs'>
-									</span>
-								</div> -->
+								
 
-								<!-- <div class='col-lg'>
-								<label for= 'total_costs'><br>Total costs:</label>
-								<div id= 'total_costs'> </div> -->
-
-								<div class = 'col' >
+								<div class = 'col' >															<!--DISPLAYS TOTAL COSTS-->
 									<label for="total_costs">Total costs:</label>
 									<span>
 										$<input readonly id='total_costs' placeholder='0' min='0'>
 									</span>
 								</div>
 							</div>
-							
-
-						
-								
+																					
 							</form>
 						</div>
-					
-							
-					
+																
 						<!-- /FORM -->
 
 
 					</div>
-
 				
 			</section>
+				<!--BUTTONS: RESET AND SUBMIT-->
 			<div class ='container'>
 				<button style="border: 3px solid;" type="button" onclick="reset_all()">RESET ENTRIES AND SELECTIONS</button>
 			
@@ -488,6 +464,7 @@
 				alert-dark
 			-->
 
+			<!--PHONE NR AND DISCOUNT-->
 			<div class="callout alert alert-transparent b-0 rad-0 m-0 pt-60 pb-60 clearfix">
 
 				<div class="text-center">
@@ -596,10 +573,11 @@
 		<!-- PAGE LEVEL SCRIPT -->
 		<script async src="assets/js/view/pack_realestate.js"></script>
 
+
 		<!--MY SCRIPT-->
 		
 		<script>
-		//MANAGE QUESTIONS
+		//HIDES QUESTIONS
 		$('#res_questions').hide();
 		$('#com_questions').hide();
 		$('#corp_questions').hide();
@@ -607,7 +585,7 @@
 		$('#radio_buttons').hide();
 		$('.results').hide();
 
-/* $(selector).show(speed,easing,callback) */
+		//SHOWS SELECTED QUESTION SET, INPUTS, AND HIDES OTHERS, RADIO BUTTON 
 
 		$('#building').on('change', function(){
 			$('#radio_buttons').show();
@@ -628,10 +606,9 @@
 				$('#res_nb').val('0');
 				$('#res_flo').val('0');
 				$('#res_under').val('0');
-				//$('#nb_columns_res').val('0'); //marche pas
-				//$("#building")[0].reset(); //marche pas
+				
 				$('#nb_elevators_res').empty();
-				//$('nb_columns_res').empty();
+				
 				$('.effacer').empty();
 				
 				
@@ -664,72 +641,26 @@
 		
 		});
 
-	
-		
-
-		
-
-			//$('#res_nb').on('change', function(){
-				//var _res_nb = document.getElementById('res_nb');
-			//}
-
-		
-		//var nb_elevators_res = res_nb;
-
-		
-
-		//CALCULATES NB OF ELEVATORS AND COLUMNS
-		// var 	_res_nb 			= $('id=res_nb').val();			
-		
-		// // 		// _res_flo			= $('#res_flo').val()				||0				//nb of floors
-		// // 		// _res_under			= $('#res_under').val()				||0				//nb of underground floors
-		// // 		// _com_nb				= $('#com_nb').val()				||0				//
-		// // 		// _com_flo			= $('#com_flo').val()				||0				//
-		// // 		// _com_under			= $('#com_under').val()				||0				//
-		// var 	_nb_asc				=$("input[id=res_nb]:change").val();
-		// // $('#nb_elevators').html(_nb_asc)
-
-		
-		//Ebauche pour afficher...principe...
-		// $("input[type='number']").change(function(){
-		// 	var _res_nb = document.getElementById('res_nb');
-		// 	var _nb_asc = _res_nb;
-		// 	if(_nb_asc){
-		// 		$('#nb_el').html(_nb_asc)
-		// 	}	
-		// });
-
-		// RESIDENTIAL
-		//siehe Beispiel hier: https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-10.php 
-		function multiplyBy()
-{
-		num1 = document.getElementById("firstNumber").value;
-		num2 = document.getElementById("secondNumber").value;
-		document.getElementById("result").innerHTML = num1 * num2;
-		
-}
-		//MANAGE UNIT PRICE FOR CHOSEN LINE
-		$('#unit_price_standard').hide();
-		$('#unit_price_premium').hide();
-		$('#unit_price_excelium').hide();
-		
+							
+		//GLOBAL VALUE
 		var radioValueglobal = 0;
 
+		//MANAGES UNIT PRICE
 		$("input[type='radio']").click(function(){
             var radioValue = $("input[name='gender']:checked").val();
 			if(radioValue.id= 'standard'){
-				//alert("Good choice! The Standard unit price is: $" + radioValue);
+				
 				radioValue1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(radioValue)
 				$('#reponse').html(radioValue1)
 				$('#reponse').val(radioValue)
 			}
 			else if (radioValue.id= 'premium'){
-				//alert("Very good choice! The Premium unit price is: $" + radioValue);
+				
 				radioValue1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(radioValue)
 				$('#reponse').html('$' + radioValue1)
 			}
 			else if (radioValue.id= 'excelium'){
-				//alert('Excellent choice!The Excelium unit price is: $' + radioValue);
+				
 				radioValue1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(radioValue)
 				$('#reponse').html('$' + radioValue1)
 			}
@@ -738,7 +669,7 @@
 
 		var nb_columns_res_global = 0;
 
-
+		//HANDLES RESIDENTIAL VARIABLES AND INPUT
 		function residential(){
 			var res_avg = 0;
 			_res_nb = document.getElementById('res_nb').value;
@@ -752,21 +683,21 @@
 				_nb_columns_res =0;
 			}
 			
-			document.getElementById('nb_columns_res').value = document.getElementById('nb_columns_res').value = Math.ceil(_nb_columns_res);
+			document.getElementById('nb_columns_res').value = document.getElementById('nb_columns_res').value = Math.ceil(_nb_columns_res); //SHOWS NUMBER OF COLUMNS
 			
 
 			_nb_elevators_res = parseInt(res_avg) - parseInt(_nb_columns_res);
 			if(_nb_elevators_res <0){
 				_nb_elevators_res =0;
 			}
-			//document.getElementById('nb_elevators_res').innerHTML = Math.ceil(_nb_elevators_res);
-			document.getElementById('nb_elevators_res').value= Math.ceil(_nb_elevators_res); //****!!!!
+			
+			document.getElementById('nb_elevators_res').value= Math.ceil(_nb_elevators_res); //SHOWS NUMBER OF ELEVATORS
 			
 
-			nb_columns_res_global = Math.ceil(_nb_elevators_res); //copier pour comm!
+			nb_columns_res_global = Math.ceil(_nb_elevators_res); 
 
 			}
-
+			//HANDLES CORPORATE VARIABLES AND INPUT
 			function corp(){
 
 			_corp_flo = document.getElementById('corp_flo').value;
@@ -786,20 +717,24 @@
 			nb_avg_corp = Math.ceil(parseInt(_nb_elevators_corp)/parseInt(_nb_columns_corp));
 			
 			_nb_elevators_corp_final = Math.ceil(parseInt(nb_avg_corp) * parseInt(_nb_columns_corp));
+
+			//AVOIDS NEGATIVE,ABSURD RESULTS
 			if(_nb_elevators_corp_final<0){
 				_nb_elevators_corp_final=0;
 			}
 			if(_nb_columns_corp<0){
 				_nb_columns_corp=0;
 			}
+
 			
-			document.getElementById('nb_elevators_corp').value = _nb_elevators_corp_final ;
+			document.getElementById('nb_elevators_corp').value = _nb_elevators_corp_final ; //SHOW NUMBER OF ELEVATORS AND COLUMNS
 			document.getElementById('nb_columns_corp').value = _nb_columns_corp;
 			
 			nb_columns_res_global = _nb_elevators_corp_final;
 
 			}
 
+			//HANDLES HYBRID VARIABLES AND INPUT
 			function hyb(){
 
 			_hyb_flo = document.getElementById('hyb_flo').value;
@@ -819,6 +754,8 @@
 			nb_avg_hyb = Math.ceil(parseInt(_nb_elevators_hyb)/parseInt(_nb_columns_hyb));
 
 			_nb_elevators_hyb_final = Math.ceil(parseInt(nb_avg_hyb) * parseInt(_nb_columns_hyb));
+
+			//AVOIDS NEGATIVE,ABSURD RESULTS
 			if(_nb_elevators_hyb_final<0){
 				_nb_elevators_hyb_final=0;
 			}
@@ -829,7 +766,7 @@
 
 
 
-			document.getElementById('nb_elevators_hyb').value = _nb_elevators_hyb_final ;
+			document.getElementById('nb_elevators_hyb').value = _nb_elevators_hyb_final ;		//SHOW NUMBER OF ELEVATORS AND COLUMNS
 			document.getElementById('nb_columns_hyb').value = _nb_columns_hyb;
 
 			nb_columns_res_global = _nb_elevators_hyb_final;
@@ -837,42 +774,42 @@
 			}
 
 			
-
+		//HANDLES COMMERCIAL VARIABLES AND INPUT
 		function commercial(){
 		
 		_com_shaft = document.getElementById('com_shaft').value;
-		//document.getElementById('nb_elevators_com').innerHTML = 0;
+		
+
+		//AVOIDS NEGATIVE,ABSURD RESULTS
 		if(_com_shaft<0){
 			_com_shaft=0;
 		}
 		
-		document.getElementById('nb_columns_com').value = Math.ceil(_com_shaft);
+		document.getElementById('nb_columns_com').value = Math.ceil(_com_shaft);		//SHOW NUMBER OF ELEVATORS AND COLUMNS
 		document.getElementById('nb_elevators_com').value = Math.ceil(_com_shaft);
 
 				
 		window.nb_columns_res_global = Math.ceil(_com_shaft);
 		}
 		
+		//RESETS 
 		function reset_res(){
 			document.getElementById('nb_elevators_res').innerHTML() = 0;
 			document.getElementById('nb_elevators_res').value() = 0;
 			_nb_elevators_res = 0;
 		}
 		
+		//RESETS INPUT FIELDS AND SELECTIONS
 		function reset_all(){
 
 		document.getElementById('form_all').reset(); //FUNKTIONIERT! NICHT LOESCHEN!!!
 		_nb_elevators_res.value = 0;
 		document.getElementById('radio_buttons').reset();
 		document.getElementsByClassName('results').reset();
-		
-
-		
-
-		
-
+						
 		}
 
+		//CALCULATES COSTS
 		function total(){
 			
 			_costs= parseInt(window.radioValueglobal * window.nb_columns_res_global);
@@ -895,50 +832,27 @@
 			total_costs = parseFloat(inst_costs) + parseFloat(_costs);
 
 			inst_costs1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(inst_costs);
-			document.getElementById('inst_costs').innerHTML = inst_costs1;
+			document.getElementById('inst_costs').innerHTML = inst_costs1;			//SHOWS INSTALLATION COSTS
 
-			document.getElementById('inst_costs').value = inst_costs;
+			document.getElementById('inst_costs').value = inst_costs;				//SHOWS INSTALLATION COSTS
 
 
 			total_costs1 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(total_costs);
-			document.getElementById('total_costs').innerHTML = total_costs1;
+			document.getElementById('total_costs').innerHTML = total_costs1;		//SHOWS TOTAL COSTS
 
-			document.getElementById('total_costs').value = parseFloat(total_costs);//parseInt(total_costs1);
-			
+			document.getElementById('total_costs').value = parseFloat(total_costs);	//SHOWS TOTAL COSTS
+
 		}
 
+		//DISPLAYS MESSAGE WHEN SUBMIT BUTTON IS CLICKED
 		function submit(){
 			window.alert("Under construction: please press function + PrtScn and send us your saved submission in PDF format via email. Use our Contact Us form (link below). We will answer within 24 hours. Thank you.");
 		}
-		
-
-		// $("input[type='button']").change(function(){
-        //     var test = $("input[name='res_nb']:checked").val();
-		// 	if(radioValue){
-		// 		alert("Under construction: please press function+ PrtScn and send your saved submission as file attached to your email in our Contact Us form. Thank you. $" + radioValue);
-		// 		$('#reponse').html('$' + radioValue)
-		// 	}
-		// });
-
-		
-		
-		</script>
+				
+	</script>
 
 	
 <script>
-
-
-/*
-		COSTS ***ACHTUNG! WURDE NUR KOPIERT!
-		Recalculate on change
-		jQuery("#mcalc-price, #mcalc-dpayment, #mcalc-rate").keyup(function() {
-		 	_mcalc();
-		});
-
-		jQuery("#mcalc-term").change(function() {
-			_mcalc();
-		});
-*/
 
 </script>
 
